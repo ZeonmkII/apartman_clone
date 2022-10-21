@@ -1,0 +1,67 @@
+<h1>Show Checkin</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, ApartmanWeb.CheckinLive.FormComponent,
+    id: @checkin.id,
+    title: @page_title,
+    action: @live_action,
+    checkin: @checkin
+    # return_to: Routes.checkin_show_path(@socket, :show, @checkin) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Checkin:</strong>
+    <%= @checkin.checkIn %>
+  </li>
+
+  <li>
+    <strong>Checkout:</strong>
+    <%= @checkin.checkOut %>
+  </li>
+
+  <li>
+    <strong>Timein:</strong>
+    <%= @checkin.timeIn %>
+  </li>
+
+  <li>
+    <strong>Timeout:</strong>
+    <%= @checkin.timeOut %>
+  </li>
+
+  <li>
+    <strong>Durationday:</strong>
+    <%= @checkin.durationDay %>
+  </li>
+
+  <li>
+    <strong>Roomnumber:</strong>
+    <%= @checkin.roomNumber %>
+  </li>
+
+  <li>
+    <strong>Deposit:</strong>
+    <%= @checkin.deposit %>
+  </li>
+
+  <li>
+    <strong>From:</strong>
+    <%= @checkin.from %>
+  </li>
+
+  <li>
+    <strong>To:</strong>
+    <%= @checkin.to %>
+  </li>
+
+  <li>
+    <strong>Remarks:</strong>
+    <%= @checkin.remarks %>
+  </li>
+
+</ul>
+
+<span><%= # live_patch "Edit", to: Routes.checkin_show_path(@socket, :edit, @checkin), class: "button" %></span>
+<span><%= # live_redirect "Back", to: Routes.checkin_index_path(@socket, :index) %></span>

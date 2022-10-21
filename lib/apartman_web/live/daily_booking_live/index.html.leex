@@ -1,0 +1,43 @@
+<h1>Listing Dailybookings</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ApartmanWeb.DailyBookingLive.FormComponent,
+    id: @daily_booking.id || :new,
+    title: @page_title,
+    action: @live_action,
+    daily_booking: @daily_booking
+    # return_to: Routes.daily_booking_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>BookingID</th>
+      <th>Check-In</th>
+      <th>Check-Out</th>
+      <th>Duration(Day)</th>
+      <th>Remarks</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="dailybookings">
+    <%= for daily_booking <- @dailybookings do %>
+      <tr id="daily_booking-<%= daily_booking.id %>">
+        <td><%= daily_booking.booking_id %></td>
+        <td><%= daily_booking.check_in %></td>
+        <td><%= daily_booking.check_out %></td>
+        <td><%= daily_booking.duration_day %></td>
+        <td><%= daily_booking.remarks %></td>
+
+        <td>
+          <%# <span><%= live_redirect "Show", to: Routes.daily_booking_show_path(@socket, :show, daily_booking) %></span>
+          <%# <span><%= live_patch "Edit", to: Routes.daily_booking_index_path(@socket, :edit, daily_booking) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: daily_booking.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= # live_patch "New Daily booking", to: Routes.daily_booking_index_path(@socket, :new) %></span>

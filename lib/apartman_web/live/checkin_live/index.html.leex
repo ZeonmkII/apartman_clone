@@ -1,0 +1,53 @@
+<h1>Listing Checkins</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ApartmanWeb.CheckinLive.FormComponent,
+    id: @checkin.id || :new,
+    title: @page_title,
+    action: @live_action,
+    checkin: @checkin
+    # return_to: Routes.checkin_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Check-In</th>
+      <th>Check-Out</th>
+      <th>Time-In</th>
+      <th>Time-Out</th>
+      <th>Duration(Day)</th>
+      <th>Room</th>
+      <th>Deposit</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Remarks</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="checkins">
+    <%= for checkin <- @checkins do %>
+      <tr id="checkin-<%= checkin.id %>">
+        <td><%= checkin.check_in %></td>
+        <td><%= checkin.check_out %></td>
+        <td><%= checkin.time_in %></td>
+        <td><%= checkin.time_out %></td>
+        <td><%= checkin.duration_day %></td>
+        <td><%= checkin.room_number %></td>
+        <td><%= checkin.deposit %></td>
+        <td><%= checkin.from %></td>
+        <td><%= checkin.to %></td>
+        <td><%= checkin.remarks %></td>
+
+        <td>
+          <%# <span><%= live_redirect "Show", to: Routes.checkin_show_path(@socket, :show, checkin) </span> %>
+          <%# <span><%= live_patch "Edit", to: Routes.checkin_index_path(@socket, :edit, checkin) </span> %>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: checkin.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= # live_patch "New Checkin", to: Routes.checkin_index_path(@socket, :new) %></span>

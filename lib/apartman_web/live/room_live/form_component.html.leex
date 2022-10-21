@@ -1,0 +1,22 @@
+<h2><%= @title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "room-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= label f, :number %>
+  <%= text_input f, :number %>
+  <%= error_tag f, :number %>
+
+  <%= label f, :bBooked %>
+  <%= checkbox f, :bBooked %>
+  <%= error_tag f, :bBooked %>
+
+  <%= label f, :bOccupied %>
+  <%= checkbox f, :bOccupied %>
+  <%= error_tag f, :bOccupied %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>

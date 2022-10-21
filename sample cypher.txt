@@ -1,0 +1,52 @@
+===========================================================
+===== Visualize Schema
+CALL db.schema.visualization
+
+===== Show Everything in Database
+MATCH (n) RETURN n
+
+===== Clear Database
+MATCH (n) DETACH DELETE n
+
+===========================================================
+
+===== Clean up all the 'Deleted' Nodes
+MATCH (n {delete: true}) DETACH DELETE n
+
+===========================================================
+
+===== Get All Rooms
+MATCH (r:Room) RETURN r.number ORDER BY r.number
+
+===========================================================
+
+**************
+*** Random ***
+**************
+
+===== Randomly get 1 (available) Room
+MATCH (r:Room) WHERE r.bBooked = false AND r.bOccupied = false RETURN r.number AS Room ORDER BY rand() LIMIT 1
+
+===== Randomly get 1 Customer
+MATCH (c:Customer) RETURN c AS Customer ORDER BY rand() LIMIT 1
+
+===========================================================
+
+******************************************************
+*** Get particular Customer info by ID-Card Number ***
+******************************************************
+
+===== Get User who created the Customer
+MATCH (c:Customer)<-[rel:CREATE]-(u:User) WHERE c.idNumber = "___id___" RETURN c AS Customer, rel AS Created, u AS User
+
+===== Get all DailyBookings for the Customer
+MATCH (c:Customer{idNumber: "___id___"})-->(r:DailyRent) MATCH (r)-->(b:DailyBooking) RETURN b AS Booking
+
+===== Get all Check-Ins for the Customer
+MATCH (c:Customer{idNumber: "___id___"})-->(r:DailyRent) MATCH (r)-[*1..2]->(k:Checkin) RETURN k AS Checkin
+
+===== Get all MonthlyBookings for the Customer
+MATCH (c:Customer{idNumber: "___id___"})-->(r:MonthlyRent) MATCH (r)-->(b:MonthlyBooking) RETURN b AS Booking
+
+===== Get all Contracts (Monthly) for the Customer
+MATCH (c:Customer{idNumber: "___id___"})-->(r:MonthlyRent) MATCH (r)-[*1..2]->(k:Contract) RETURN k AS Contract

@@ -1,0 +1,59 @@
+<h1>Listing Monthlybookings</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ApartmanWeb.MonthlyBookingLive.FormComponent,
+    id: @monthly_booking.id || :new,
+    title: @page_title,
+    action: @live_action,
+    monthly_booking: @monthly_booking
+    # return_to: Routes.monthly_booking_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>BookingID</th>
+      <th>Check-In</th>
+      <th>Check-Out</th>
+      <th>Duration(Month)</th>
+      <th>Duration(Day)</th>
+      <th>Remarks</th>
+      <th>RentFees</th>
+      <th>ServiceFees</th>
+      <th>Deposit</th>
+      <th>AdvancePayment</th>
+      <th>KeycardFees</th>
+      <th>OtherLabels</th>
+      <th>OtherFees</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="monthlybookings">
+    <%= for monthly_booking <- @monthlybookings do %>
+      <tr id="monthly_booking-<%= monthly_booking.id %>">
+        <td><%= monthly_booking.booking_id %></td>
+        <td><%= monthly_booking.check_in %></td>
+        <td><%= monthly_booking.check_out %></td>
+        <td><%= monthly_booking.duration_month %></td>
+        <td><%= monthly_booking.duration_day %></td>
+        <td><%= monthly_booking.remarks %></td>
+        <td><%= monthly_booking.rent_fees %></td>
+        <td><%= monthly_booking.service_fees %></td>
+        <td><%= monthly_booking.deposit %></td>
+        <td><%= monthly_booking.advance_payment %></td>
+        <td><%= monthly_booking.keycard_fees %></td>
+        <td><%= monthly_booking.other_labels %></td>
+        <td><%= monthly_booking.other_fees %></td>
+
+        <td>
+          <%# <span><%= live_redirect "Show", to: Routes.monthly_booking_show_path(@socket, :show, monthly_booking)</span> %>
+          <%# <span><%= live_patch "Edit", to: Routes.monthly_booking_index_path(@socket, :edit, monthly_booking)</span> %>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: monthly_booking.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= # live_patch "New Monthly booking", to: Routes.monthly_booking_index_path(@socket, :new) %></span>

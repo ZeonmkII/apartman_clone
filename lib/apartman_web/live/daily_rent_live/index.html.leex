@@ -1,0 +1,35 @@
+<h1>Listing Dailyrents</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ApartmanWeb.DailyRentLive.FormComponent,
+    id: @daily_rent.id || :new,
+    title: @page_title,
+    action: @live_action,
+    daily_rent: @daily_rent
+    # return_to: Routes.daily_rent_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Current?</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="dailyrents">
+    <%= for daily_rent <- @dailyrents do %>
+      <tr id="daily_rent-<%= daily_rent.id %>">
+        <td><%= daily_rent.b_current %></td>
+
+        <td>
+          <%# <span><%= live_redirect "Show", to: Routes.daily_rent_show_path(@socket, :show, daily_rent) </span> %>
+          <%# <span><%= live_patch "Edit", to: Routes.daily_rent_index_path(@socket, :edit, daily_rent) </span> %>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: daily_rent.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= # live_patch "New Daily rent", to: Routes.daily_rent_index_path(@socket, :new) %></span>

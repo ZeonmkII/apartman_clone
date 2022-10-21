@@ -1,0 +1,42 @@
+<h1>Show Daily invoice</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, ApartmanWeb.DailyInvoiceLive.FormComponent,
+    id: @daily_invoice.id,
+    title: @page_title,
+    action: @live_action,
+    daily_invoice: @daily_invoice
+    # return_to: Routes.daily_invoice_show_path(@socket, :show, @daily_invoice) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Deposit:</strong>
+    <%= @daily_invoice.deposit %>
+  </li>
+
+  <li>
+    <strong>Advancepayment:</strong>
+    <%= @daily_invoice.advancePayment %>
+  </li>
+
+  <li>
+    <strong>Keycardfees:</strong>
+    <%= @daily_invoice.keycardFees %>
+  </li>
+
+  <li>
+    <strong>Otherlabels:</strong>
+    <%= @daily_invoice.otherLabels %>
+  </li>
+
+  <li>
+    <strong>Otherfees:</strong>
+    <%= @daily_invoice.otherFees %>
+  </li>
+
+</ul>
+
+<span><%= # live_patch "Edit", to: Routes.daily_invoice_show_path(@socket, :edit, @daily_invoice), class: "button" %></span>
+<span><%= # live_redirect "Back", to: Routes.daily_invoice_index_path(@socket, :index) %></span>

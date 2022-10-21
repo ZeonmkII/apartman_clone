@@ -1,0 +1,57 @@
+<h1>Show Building</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, ApartmanWeb.BuildingLive.FormComponent,
+    id: @building.id,
+    title: @page_title,
+    action: @live_action,
+    building: @building
+    # return_to: Routes.building_show_path(@socket, :show, @building) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @building.name %>
+  </li>
+
+  <li>
+    <strong>Address:</strong>
+    <%= @building.address %>
+  </li>
+
+  <li>
+    <strong>Taxid:</strong>
+    <%= @building.taxId %>
+  </li>
+
+  <li>
+    <strong>Phone:</strong>
+    <%= @building.phone %>
+  </li>
+
+  <li>
+    <strong>Calctypewater:</strong>
+    <%= @building.calcTypeWater %>
+  </li>
+
+  <li>
+    <strong>Calctypeelectric:</strong>
+    <%= @building.calcTypeElectric %>
+  </li>
+
+  <li>
+    <strong>Unitpricewater:</strong>
+    <%= @building.unitPriceWater %>
+  </li>
+
+  <li>
+    <strong>Unitpriceelectric:</strong>
+    <%= @building.unitPriceElectric %>
+  </li>
+
+</ul>
+
+<span><%= # live_patch "Edit", to: Routes.building_show_path(@socket, :edit, @building), class: "button" %></span>
+<span><%= # live_redirect "Back", to: Routes.building_index_path(@socket, :index) %></span>

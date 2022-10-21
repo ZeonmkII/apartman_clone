@@ -1,0 +1,69 @@
+<h1>Listing Customers</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ApartmanWeb.CustomerLive.FormComponent,
+    id: @customer.id || :new,
+    title: @page_title,
+    action: @live_action,
+    customer: @customer
+    # return_to: Routes.customer_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID Number</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Firstname Alt</th>
+      <th>Lastname Alt</th>
+      <th>Date of Birth</th>
+      <th>Religion</th>
+      <th>Nationality</th>
+      <th>Sex</th>
+      <th>Address</th>
+      <th>Issue by</th>
+      <th>Date of Issue</th>
+      <th>Date of Expiry</th>
+      <th>Photo</th>
+      <th>Phone</th>
+      <th>Line</th>
+      <th>Occupation</th>
+      <th>Emergency Contact</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="customers">
+    <%= for customer <- @customers do %>
+      <tr id="customer-<%= customer.id %>">
+        <td><%= customer.id_number %></td>
+        <td><%= customer.first_name %></td>
+        <td><%= customer.last_name %></td>
+        <td><%= customer.first_name_alt %></td>
+        <td><%= customer.last_name_alt %></td>
+        <td><%= customer.date_of_birth %></td>
+        <td><%= customer.faith %></td>
+        <td><%= customer.nationality %></td>
+        <td><%= customer.gender %></td>
+        <td><%= customer.address %></td>
+        <td><%= customer.issue_by %></td>
+        <td><%= customer.date_of_issue %></td>
+        <td><%= customer.date_of_expiry %></td>
+        <td><%= customer.photo %></td>
+        <td><%= customer.phone %></td>
+        <td><%= customer.line %></td>
+        <td><%= customer.occupation %></td>
+        <td><%= customer.emergency_contact %></td>
+
+        <td>
+          <%# <span><%= live_redirect "Show", to: Routes.customer_show_path(@socket, :show, customer) </span> %>
+          <%# <span><%= live_patch "Edit", to: Routes.customer_index_path(@socket, :edit, customer) </span> %>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: customer.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= # live_patch "New Customer", to: Routes.customer_index_path(@socket, :new) %></span>

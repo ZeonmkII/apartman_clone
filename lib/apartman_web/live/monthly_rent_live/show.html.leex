@@ -1,0 +1,32 @@
+<h1>Show Monthly rent</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, ApartmanWeb.MonthlyRentLive.FormComponent,
+    id: @monthly_rent.id,
+    title: @page_title,
+    action: @live_action,
+    monthly_rent: @monthly_rent
+    # return_to: Routes.monthly_rent_show_path(@socket, :show, @monthly_rent) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Bcurrent:</strong>
+    <%= @monthly_rent.bCurrent %>
+  </li>
+
+  <li>
+    <strong>Btenant:</strong>
+    <%= @monthly_rent.bTenant %>
+  </li>
+
+  <li>
+    <strong>Bcontract:</strong>
+    <%= @monthly_rent.bContract %>
+  </li>
+
+</ul>
+
+<span><%= # live_patch "Edit", to: Routes.monthly_rent_show_path(@socket, :edit, @monthly_rent), class: "button" %></span>
+<span><%= # live_redirect "Back", to: Routes.monthly_rent_index_path(@socket, :index) %></span>

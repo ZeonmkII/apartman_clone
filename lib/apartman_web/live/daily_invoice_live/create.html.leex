@@ -1,0 +1,102 @@
+<section class="page-bg">
+<div class="md:flex py-3 mx:auto my:auto">
+<div class="container page-container">
+<div class="w-3/4">
+<!-- component -->
+<h1 class="page-title-header"> <%= @page_title %> :: J-Resident</h1><br>
+
+<div class="div-main-form">
+
+<form phx-submit="submit" phx-change="update">
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="input-label" for="first_name">
+                ชื่อ
+            </label>
+                <input class="string-input-read" id="first_name" type="text" name="first_name" value="<%= @customer.firstName %>" disabled>
+        </div>
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="last_name">
+                นามสกุล
+            </label>
+                <input class="string-input-read" id="last_name" type="text" name="last_name" value="<%= @customer.lastName %>" disabled>
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="room_fees">
+                ค่าห้อง<span class="required-star">*</span>
+            </label>
+                <input class="string-input" id="room_fees" placeholder="฿฿฿฿" type="number" name="room_fees" value="<%= @room_fees %>" required>
+        </div>
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="deposit">
+                เงินประกัน<span class="required-star">*</span>
+            </label>
+                <input class="string-input" id="deposit" placeholder="฿฿฿฿" type="number" name="deposit" value="<%= @deposit %>" required>
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="remaining">
+                คงเหลือ<span class="required-star">*</span>
+            </label>
+                <input class="string-input" id="remaining" placeholder="฿฿฿฿" type="number" name="remaining" value="<%= @remaining %>" required>
+        </div>
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="total">
+                รวม<span class="required-star">*</span>
+            </label>
+                <input class="string-input" id="total" placeholder="฿฿฿฿" type="number" name="total" value="<%= @total %>" required>
+        </div>
+    </div>
+
+
+<!--Button-->
+
+  <div class="-mx-0 mb-1 md:flex mr-2 justify-end">
+    <button class="btn-form-submit" type="submit">
+      ต่อไป
+    </button>
+  </div>
+
+<!--Button-->
+
+</form>
+
+</div>
+
+  <div class="flex justify-center">
+    <p class="copyright-text">
+      &copy;2020 Horganice. All rights reserved.
+    </p>
+  </div>
+
+<!-- component -->
+
+<!-- DEBUG -->
+<%= if @debug do %>
+<div class="flex justify-center">
+  <p class="copyright-text">
+    :: DEBUG ::<br>
+    :: customer ::
+    <br>id_number : <u><%= @customer.idNumber %></u>
+    &nbsp;&nbsp;firstname : <u><%= @customer.firstName %></u>
+    &nbsp;&nbsp;lastname : <u><%= @customer.lastName %></u><br>
+    :: fees ::
+    <br>room_fees : <u><%= @room_fees %></u>
+    &nbsp;&nbsp;room_fees : <u><%= @room_fees%></u>
+    &nbsp;&nbsp;remaining : <u><%= @remaining%></u>
+    &nbsp;&nbsp;total : <u><%= @total%></u> <br>
+  </p>
+</div>
+<% end %>
+<!-- DEBUG -->
+
+</div>
+</div>
+</div>
+</section>

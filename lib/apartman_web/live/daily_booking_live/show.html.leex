@@ -1,0 +1,42 @@
+<h1>Show Daily booking</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, ApartmanWeb.DailyBookingLive.FormComponent,
+    id: @daily_booking.id,
+    title: @page_title,
+    action: @live_action,
+    daily_booking: @daily_booking
+    # return_to: Routes.daily_booking_show_path(@socket, :show, @daily_booking) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Bookingid:</strong>
+    <%= @daily_booking.bookingId %>
+  </li>
+
+  <li>
+    <strong>Checkin:</strong>
+    <%= @daily_booking.checkIn %>
+  </li>
+
+  <li>
+    <strong>Checkout:</strong>
+    <%= @daily_booking.checkOut %>
+  </li>
+
+  <li>
+    <strong>Durationday:</strong>
+    <%= @daily_booking.durationDay %>
+  </li>
+
+  <li>
+    <strong>Remarks:</strong>
+    <%= @daily_booking.remarks %>
+  </li>
+
+</ul>
+
+<span><%= # live_patch "Edit", to: Routes.daily_booking_show_path(@socket, :edit, @daily_booking), class: "button" %></span>
+<span><%= # live_redirect "Back", to: Routes.daily_booking_index_path(@socket, :index) %></span>

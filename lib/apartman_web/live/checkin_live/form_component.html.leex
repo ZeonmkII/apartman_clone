@@ -1,0 +1,50 @@
+<h2><%= @title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "checkin-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= label f, :checkIn %>
+  <%= date_select f, :checkIn %>
+  <%= error_tag f, :checkIn %>
+
+  <%= label f, :checkOut %>
+  <%= date_select f, :checkOut %>
+  <%= error_tag f, :checkOut %>
+
+  <%= label f, :timeIn %>
+  <%= time_select f, :timeIn %>
+  <%= error_tag f, :timeIn %>
+
+  <%= label f, :timeOut %>
+  <%= time_select f, :timeOut %>
+  <%= error_tag f, :timeOut %>
+
+  <%= label f, :durationDay %>
+  <%= number_input f, :durationDay %>
+  <%= error_tag f, :durationDay %>
+
+  <%= label f, :roomNumber %>
+  <%= text_input f, :roomNumber %>
+  <%= error_tag f, :roomNumber %>
+
+  <%= label f, :deposit %>
+  <%= text_input f, :deposit %>
+  <%= error_tag f, :deposit %>
+
+  <%= label f, :from %>
+  <%= text_input f, :from %>
+  <%= error_tag f, :from %>
+
+  <%= label f, :to %>
+  <%= text_input f, :to %>
+  <%= error_tag f, :to %>
+
+  <%= label f, :remarks %>
+  <%= text_input f, :remarks %>
+  <%= error_tag f, :remarks %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>

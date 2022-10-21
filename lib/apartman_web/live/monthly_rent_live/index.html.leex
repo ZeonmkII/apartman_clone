@@ -1,0 +1,39 @@
+<h1>Listing Monthlyrents</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ApartmanWeb.MonthlyRentLive.FormComponent,
+    id: @monthly_rent.id || :new,
+    title: @page_title,
+    action: @live_action,
+    monthly_rent: @monthly_rent
+    # return_to: Routes.monthly_rent_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Current?</th>
+      <th>Tenant?</th>
+      <th>Contract?</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="monthlyrents">
+    <%= for monthly_rent <- @monthlyrents do %>
+      <tr id="monthly_rent-<%= monthly_rent.id %>">
+        <td><%= monthly_rent.b_current %></td>
+        <td><%= monthly_rent.b_tenant %></td>
+        <td><%= monthly_rent.b_contract %></td>
+
+        <td>
+          <%# <span><%= live_redirect "Show", to: Routes.monthly_rent_show_path(@socket, :show, monthly_rent) </span> %>
+          <%# <span><%= live_patch "Edit", to: Routes.monthly_rent_index_path(@socket, :edit, monthly_rent) </span> %>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: monthly_rent.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= # live_patch "New Monthly rent", to: Routes.monthly_rent_index_path(@socket, :new) %></span>

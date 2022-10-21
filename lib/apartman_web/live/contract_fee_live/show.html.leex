@@ -1,0 +1,42 @@
+<h1>Show Contract fee</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, ApartmanWeb.ContractFeeLive.FormComponent,
+    id: @contract_fee.id,
+    title: @page_title,
+    action: @live_action,
+    contract_fee: @contract_fee
+    # return_to: Routes.contract_fee_show_path(@socket, :show, @contract_fee) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Deposit:</strong>
+    <%= @contract_fee.deposit %>
+  </li>
+
+  <li>
+    <strong>Advancepayment:</strong>
+    <%= @contract_fee.advancePayment %>
+  </li>
+
+  <li>
+    <strong>Keycardfees:</strong>
+    <%= @contract_fee.keycardFees %>
+  </li>
+
+  <li>
+    <strong>Otherlabels:</strong>
+    <%= @contract_fee.otherLabels %>
+  </li>
+
+  <li>
+    <strong>Otherfees:</strong>
+    <%= @contract_fee.otherFees %>
+  </li>
+
+</ul>
+
+<span><%= # live_patch "Edit", to: Routes.contract_fee_show_path(@socket, :edit, @contract_fee), class: "button" %></span>
+<span><%= # live_redirect "Back", to: Routes.contract_fee_index_path(@socket, :index) %></span>

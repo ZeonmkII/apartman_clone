@@ -1,0 +1,96 @@
+<section class="page-bg">
+<div class="md:flex py-3 mx:auto my:auto">
+<div class="container page-container">
+<div class="w-3/4">
+<!-- component -->
+<h1 class="page-title-header"> <%= @page_title %> :: J-Resident</h1><br>
+
+<div class="div-main-form">
+
+<form phx-submit="submit" phx-change="update">
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="first_name">
+        ชื่อ
+      </label>
+        <input class="string-input-read" id="first_name" type="text" name="first_name" value="<%= @customer.firstName %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="last_name">
+        นามสกุล
+      </label>
+        <input class="string-input-read" id="last_name" type="text" name="last_name" value="<%= @customer.lastName %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="check_in">
+        วันที่เข้าพัก<span class="required-star">*</span>
+      </label>
+        <input class="string-input" id="check_in" type="date" name="check_in" value="<%= @dailyBooking.checkIn %>" required>
+    </div>
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="check_out">
+        วันที่ออก<span class="required-star">*</span>
+      </label>
+        <input class="string-input" id="check_out" type="date" name="check_out" value="<%= @dailyBooking.checkOut %>" required>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-full px-3">
+      <label class="input-label" for="remarks">
+        หมายเหตุ
+      </label>
+        <input class="string-input" id="remarks" placeholder="ข้อมูลเพิ่มเติม" type="text" name="remarks" value="<%= @dailyBooking.remarks %>">
+    </div>
+  </div>
+
+<!--Button-->
+
+  <div class="-mx-0 mb-1 md:flex mr-2 justify-end">
+    <button class="btn-form-submit" type="submit">
+      ต่อไป
+    </button>
+  </div>
+
+<!--Button-->
+
+</form>
+
+</div>
+
+  <div class="flex justify-center">
+    <p class="copyright-text">
+      &copy;2020 Horganice. All rights reserved.
+    </p>
+  </div>
+
+<!-- component -->
+
+<!-- DEBUG -->
+<%= if @debug do %>
+<div class="flex justify-center">
+  <p class="copyright-text">
+    :: DEBUG ::<br>
+    :: customer ::
+    <br>id_number : <u><%= @customer.idNumber %></u>
+    &nbsp;&nbsp;firstname : <u><%= @customer.firstName %></u>
+    &nbsp;&nbsp;lastname : <u><%= @customer.lastName %></u><br>
+    :: data ::
+    <br>check_in : <u><%= @dailyBooking.checkIn %></u>
+    &nbsp;&nbsp;check_out : <u><%= @dailyBooking.checkOut%></u>
+    <br>
+    &nbsp;&nbsp;remarks : <u><%= @dailyBooking.remarks %></u>
+
+  </p>
+</div>
+<% end %>
+<!-- DEBUG -->
+
+</div>
+</div>
+</div>
+</section>

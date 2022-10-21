@@ -1,0 +1,122 @@
+<section class="page-bg">
+<div class="md:flex py-3 mx:auto my:auto">
+<div class="container page-container">
+<div class="w-3/4">
+<!-- component -->
+<h1 class="page-title-header"> <%= @page_title %> </h1><br>
+
+<div class="div-main-form">
+
+<form phx-submit="submit" phx-change="update">
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="electric_start">
+                มิเตอร์ไฟเริ่มต้น
+            </label>
+                <input class="string-input" id="electric_start" placeholder="xxx" type="number" name="electric_start" value="<%= @electricStart %>">
+        </div>
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="water_start">
+                มิเตอร์น้ำเริ่มต้น
+            </label>
+                <input class="string-input" id="water_start" placeholder="xxx" type="number" name="water_start" value="<%= @waterEnd %>">
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="other_labels">
+                รายละเอียด 1
+            </label>
+                <input class="string-input" id="other_labels" placeholder="ข้อมูลค่าใช้จ่ายใหม่" type="text" name="other_labels" value="<%= @otherLabels %>">
+        </div>
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="other_fees">
+                จำนวนเงิน
+            </label>
+                <input class="string-input" id="other_fees" placeholder="฿฿฿฿" type="number" name="other_fees" value="<%= @otherFees %>">
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="other_labels">
+                รายละเอียด 2
+            </label>
+                <input class="string-input" id="other_labels" placeholder="ข้อมูลค่าใช้จ่ายใหม่" type="text" name="other_labels" value="<%= @otherLabels %>">
+        </div>
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="other_fees">
+                จำนวนเงิน
+            </label>
+                <input class="string-input" id="other_fees" placeholder="฿฿฿฿" type="number" name="other_fees" value="<%= @otherFees %>">
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="other_labels">
+                รายละเอียด 3
+            </label>
+                <input class="string-input" id="other_labels" placeholder="ข้อมูลค่าใช้จ่ายใหม่" type="text" name="other_labels" value="<%= @otherLabels %>">
+        </div>
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="other_fees">
+                จำนวนเงิน
+            </label>
+                <input class="string-input" id="other_fees" placeholder="฿฿฿฿" type="number" name="other_fees" value="<%= @otherFees %>">
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="other_labels">
+                รายละเอียด 4
+            </label>
+                <input class="string-input" id="other_labels" placeholder="ข้อมูลค่าใช้จ่ายใหม่" type="text" name="other_labels" value="<%= @otherLabels %>">
+        </div>
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="other_fees">
+                จำนวนเงิน
+            </label>
+                <input class="string-input" id="other_fees" placeholder="฿฿฿฿" type="number" name="other_fees" value="<%= @otherFees %>">
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-full px-3">
+            <label class="input-label" for="keycard_number">
+                เลขคีย์การ์ด
+            </label>
+                <input class="string-input" id="keycard_number" type="text" name="keycard_number" value="<%= @customer.keycardNumber %>" disabled>
+        </div>
+    </div>
+
+
+<!--Button-->
+
+    <div class="-mx-0 mb-1 md:flex mr-2 justify-end">
+        <button class="btn-form-submit" type="button">
+            ต่อไป
+        </button>
+    </div>
+
+<!--Button-->
+
+</form>
+
+</div>
+
+  <div class="flex justify-center">
+    <p class="copyright-text">
+      &copy;2020 Horganice. All rights reserved.
+    </p>
+  </div>
+
+<!-- component -->
+
+</div>
+</div>
+</div>
+</section>

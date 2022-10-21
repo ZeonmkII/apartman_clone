@@ -1,0 +1,154 @@
+<section class="page-bg">
+<div class="md:flex py-3 mx:auto my:auto">
+<div class="container page-container">
+<div class="w-3/4">
+<!-- component -->
+<h1 class="page-title-header"> <%= @page_title %> </h1><br>
+
+<div class="div-main-form">
+
+<form phx-submit="submit" phx-change="update">
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="input-label" for="first_name">
+                ชื่อ
+            </label>
+                <input class="string-input" id="first_name" type="text" name="first_name" value="<%= @customer.firstName %>" disabled>
+        </div>
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="last_name">
+                นามสกุล
+            </label>
+                <input class="string-input" id="last_name" type="text" name="last_name" value="<%= @customer.lastName %>" disabled>
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="input-label" for="room_number">
+                หมายเลขห้อง
+            </label>
+                <input class="string-input" id="room_number" type="number" name="room_number" value="<%= @customer.roomNumber %>" disabled>
+        </div>
+        <div class="md:w-full px-3">
+            <label class="input-label" for="keycard_number">
+                เลขคีย์การ์ด
+            </label>
+                <input class="string-input" id="keycard_number" type="text" name="keycard_number" value="<%= @customer.keycardNumber %>">
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="input-label" for="rent_fees">
+                ค่าเช่าห้อง
+            </label>
+                <input class="string-input" id="rent_fees" type="number" name="rent_fees" value="<%= @customer.rentFees %>" disabled>
+        </div>
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="keycard_fees">
+                ค่าคีย์การ์ด
+            </label>
+                <input class="string-input" id="keycard_fees" type="number" name="keycard_fees" value="<%= @customer.keycardFees %>" disabled>
+        </div>
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="input-label" for="service_fees">
+                ค่าส่วนกลาง
+            </label>
+                <input class="string-input" id="service_fees" type="number" name="service_fees" value="<%= @customer.serviceFees %>" disabled>
+        </div>
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="input-label" for="service_fees">
+                ค่าส่วนกลาง
+            </label>
+                <input class="string-input" id="service_fees" type="number" name="service_fees" value="<%= @customer.serviceFees %>" disabled>
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-full px-3">
+            <label class="input-label" for="remarks">
+                หมายเหตุ
+            </label>
+                <input class="string-input" id="remarks" type="text" name="remarks" value="<%= @customer.remarks %>" disabled>
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="input-label" for="check_in">
+                วันที่เริ่มสัญญา
+            </label>
+                <input class="string-input" id="check_in" placeholder="YYYY-MM-DD" type="date" name="check_in" value="<%= @checkIn %>" required>
+        </div>
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="input-label" for="check_out">
+                วันที่สิ้นสุดสัญญา
+            </label>
+                <input class="string-input" id="check_out" placeholder="YYYY-MM-DD" type="date" name="check_out" value="<%= @checkOut %>" required>
+        </div>
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="input-label" for="duration_month">
+                ระยะเวลาสัญญา (เดือน)
+            </label>
+                <input class="string-input" id="duration_month" type="number" name="duration_month" value="<%= @customer.durationMonth %>" disable>
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <input type="checkbox" id="is_customer" name="is_customer" value="<%= @customer.isCustomer %>">
+            <label class="input-label" for="is_customer">
+                สัญญาสำหรับผู้เข้าพักใหม่ (ระบบจะใช้เลขมิเตอร์แรกเขาในการคำนวณบิล)
+            </label>
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="electric_start">
+                มิเตอร์ไฟเริ่มต้น
+            </label>
+                <input class="string-input" id="electric_start" placeholder="xxx" type="number" name="electric_start" value="<%= @electricStart %>">
+        </div>
+        <div class="md:w-1/2 px-3">
+            <label class="input-label" for="water_start">
+                มิเตอร์น้ำเริ่มต้น
+            </label>
+                <input class="string-input" id="water_start" placeholder="xxx" type="number" name="water_start" value="<%= @waterEnd %>">
+        </div>
+    </div>
+
+<!--Button-->
+
+    <div class="-mx-0 mb-1 md:flex mr-2 justify-end">
+        <button class="btn-form-submit" type="button">
+            แก้ไขข้อมูล
+        </button>
+        <button class="btn-form-submit" type="button">
+            บันทึก
+        </button>
+        <button class="btn-form-submit" type="button">
+            พิมพ์
+        </button>
+    </div>
+
+<!--Button-->
+
+</form>
+
+</div>
+
+    <div class="flex justify-center">
+        <p class="copyright-text">
+            &copy;2020 Horganice. All rights reserved.
+        </p>
+    </div>
+
+<!-- component -->
+
+</div>
+</div>
+</div>
+</section>

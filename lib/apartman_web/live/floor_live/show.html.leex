@@ -1,0 +1,22 @@
+<h1>Show Floor</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, ApartmanWeb.FloorLive.FormComponent,
+    id: @floor.id,
+    title: @page_title,
+    action: @live_action,
+    floor: @floor
+    # return_to: Routes.floor_show_path(@socket, :show, @floor) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Number:</strong>
+    <%= @floor.number %>
+  </li>
+
+</ul>
+
+<span><%= # live_patch "Edit", to: Routes.floor_show_path(@socket, :edit, @floor), class: "button" %></span>
+<span><%= # live_redirect "Back", to: Routes.floor_index_path(@socket, :index) %></span>

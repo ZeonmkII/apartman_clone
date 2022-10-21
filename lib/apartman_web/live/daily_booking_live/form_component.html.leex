@@ -1,0 +1,30 @@
+<h2><%= @title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "daily_booking-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= label f, :bookingId %>
+  <%= text_input f, :bookingId %>
+  <%= error_tag f, :bookingId %>
+
+  <%= label f, :checkIn %>
+  <%= date_select f, :checkIn %>
+  <%= error_tag f, :checkIn %>
+
+  <%= label f, :checkOut %>
+  <%= date_select f, :checkOut %>
+  <%= error_tag f, :checkOut %>
+
+  <%= label f, :durationDay %>
+  <%= number_input f, :durationDay %>
+  <%= error_tag f, :durationDay %>
+
+  <%= label f, :remarks %>
+  <%= text_input f, :remarks %>
+  <%= error_tag f, :remarks %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>

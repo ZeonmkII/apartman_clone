@@ -1,0 +1,82 @@
+<h2><%= @title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "customer-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= label f, :idNumber %>
+  <%= text_input f, :idNumber %>
+  <%= error_tag f, :idNumber %>
+
+  <%= label f, :firstName %>
+  <%= text_input f, :firstName %>
+  <%= error_tag f, :firstName %>
+
+  <%= label f, :firstNameAlt %>
+  <%= text_input f, :firstNameAlt %>
+  <%= error_tag f, :firstNameAlt %>
+
+  <%= label f, :lastName %>
+  <%= text_input f, :lastName %>
+  <%= error_tag f, :lastName %>
+
+  <%= label f, :lastNameAlt %>
+  <%= text_input f, :lastNameAlt %>
+  <%= error_tag f, :lastNameAlt %>
+
+  <%= label f, :dateOfBirth %>
+  <%= date_select f, :dateOfBirth %>
+  <%= error_tag f, :dateOfBirth %>
+
+  <%= label f, :faith %>
+  <%= text_input f, :faith %>
+  <%= error_tag f, :faith %>
+
+  <%= label f, :nationality %>
+  <%= text_input f, :nationality %>
+  <%= error_tag f, :nationality %>
+
+  <%= label f, :sex %>
+  <%= text_input f, :sex %>
+  <%= error_tag f, :sex %>
+
+  <%= label f, :address %>
+  <%= text_input f, :address %>
+  <%= error_tag f, :address %>
+
+  <%= label f, :issueBy %>
+  <%= text_input f, :issueBy %>
+  <%= error_tag f, :issueBy %>
+
+  <%= label f, :dateOfIssue %>
+  <%= date_select f, :dateOfIssue %>
+  <%= error_tag f, :dateOfIssue %>
+
+  <%= label f, :dateOfExpiry %>
+  <%= date_select f, :dateOfExpiry %>
+  <%= error_tag f, :dateOfExpiry %>
+
+  <%= label f, :photo %>
+  <%= text_input f, :photo %>
+  <%= error_tag f, :photo %>
+
+  <%= label f, :phone %>
+  <%= text_input f, :phone %>
+  <%= error_tag f, :phone %>
+
+  <%= label f, :line %>
+  <%= text_input f, :line %>
+  <%= error_tag f, :line %>
+
+  <%= label f, :occupation %>
+  <%= text_input f, :occupation %>
+  <%= error_tag f, :occupation %>
+
+  <%= label f, :emergencyContact %>
+  <%= text_input f, :emergencyContact %>
+  <%= error_tag f, :emergencyContact %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>

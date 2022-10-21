@@ -1,0 +1,49 @@
+<h1>Listing Buildings</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ApartmanWeb.BuildingLive.FormComponent,
+    id: @building.id || :new,
+    title: @page_title,
+    action: @live_action,
+    building: @building
+    # return_to: Routes.building_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Tax ID</th>
+      <th>Phone</th>
+      <th>CalcType: Water</th>
+      <th>CalcType: Electric</th>
+      <th>UnitPrice: Water</th>
+      <th>UnitPrice: Electric</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="buildings">
+    <%= for building <- @buildings do %>
+      <tr id="building-<%= building.id %>">
+        <td><%= building.name %></td>
+        <td><%= building.address %></td>
+        <td><%= building.tax_id %></td>
+        <td><%= building.phone %></td>
+        <td><%= building.calc_type_water %></td>
+        <td><%= building.calc_type_electric %></td>
+        <td><%= building.unit_price_water %></td>
+        <td><%= building.unit_price_electric %></td>
+
+        <td>
+          <%# <span><%= live_redirect "Show", to: Routes.building_show_path(@socket, :show, building) </span> %>
+          <%# <span><%= live_patch "Edit", to: Routes.building_index_path(@socket, :edit, building) </span> %>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: building.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= # live_patch "New Building", to: Routes.building_index_path(@socket, :new) %></span>

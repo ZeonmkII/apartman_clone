@@ -1,0 +1,182 @@
+<section class="page-bg">
+<div class="md:flex py-3 mx:auto my:auto">
+<div class="container page-container">
+<div class="w-3/4">
+<!-- component -->
+<h1 class="page-title-header"> <%= @page_title %> :: J-Resident</h1><br>
+
+<div class="div-main-form">
+
+<form phx-submit="submit" phx-change="update">
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="first_name">
+        ชื่อ
+      </label>
+        <input class="string-input-read" id="first_name" type="text" name="first_name" value="<%= @customer.firstName %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="last_name">
+        นามสกุล
+      </label>
+        <input class="string-input-read" id="last_name" type="text" name="last_name" value="<%= @customer.lastName %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="check_in">
+        วันที่เข้าพัก<span class="required-star">*</span>
+      </label>
+        <input class="string-input" id="check_in" type="date" name="check_in" value="<%= @monthlyBooking.checkIn %>" required>
+    </div>
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="check_out">
+        วันที่ออก<span class="required-star">*</span>
+      </label>
+        <input class="string-input" id="check_out" type="date" name="check_out" value="<%= @monthlyBooking.checkOut %>" required>
+    </div>
+  </div>
+
+   <div class="-mx-3 md:flex mb-6">
+     <div class="md:w-1/2 px-3">
+      <label class="input-label" for="advance_payment">
+        Advance Payment<span class="required-star">*</span>
+      </label>
+        <input class="string-input" id="advance_payment" placeholder="฿฿฿฿" type="number" name="advance_payment" value="<%= @monthlyBooking.advancePayment %>" required>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="deposit">
+        Deposit<span class="required-star">*</span>
+      </label>
+        <input class="string-input" id="deposit" placeholder="฿฿฿฿" type="number" name="deposit" value="<%= @monthlyBooking.deposit %>" required>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="rent_fees">
+        Rent fees<span class="required-star">*</span>
+      </label>
+        <input class="string-input" id="rent_fees" placeholder="฿฿฿฿" type="number" name="rent_fees" value="<%= @monthlyBooking.rentFees %>" required>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="service_fees">
+        Service fees<span class="required-star">*</span>
+      </label>
+        <input class="string-input" id="service_fees" placeholder="฿฿฿฿" type="number" name="service_fees" value="<%= @monthlyBooking.serviceFees %>" required>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="keycard_fees">
+        Keycard fees<span class="required-star">*</span>
+      </label>
+        <input class="string-input" id="keycard_fees" placeholder="฿฿฿฿" type="number" name="keycard_fees" value="<%= @monthlyBooking.keycardFees %>" required>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-1">
+      <div class="md:w-1/2 px-3">
+      <label class="input-label" for="other_labels_1">
+        Other Label
+      </label>
+        <input class="string-input" id="other_labels_1" placeholder="xxxx" type="text" name="other_labels_1" value="<%= @other_label1 %>">
+    </div>
+      <div class="md:w-1/2 px-3">
+      <label class="input-label" for="other_fees_1">
+        Other Fees
+      </label>
+        <input class="string-input" id="other_fees_1" placeholder="฿฿฿฿" type="number" name="other_fees_1"  value="<%= @other_fee1 %>">
+    </div>
+  </div>
+
+   <div class="-mx-3 md:flex mb-1">
+      <div class="md:w-1/2 px-3">
+        <input class="string-input" id="other_labels_2" placeholder="xxxx" type="text" name="other_labels_2"  value="<%= @other_label2 %>">
+    </div>
+      <div class="md:w-1/2 px-3">
+        <input class="string-input" id="other_fees_2" placeholder="฿฿฿฿" type="number" name="other_fees_2"  value="<%= @other_fee2 %>">
+    </div>
+  </div>
+
+   <div class="-mx-3 md:flex mb-1">
+      <div class="md:w-1/2 px-3">
+        <input class="string-input" id="other_labels_3" placeholder="xxxx" type="text" name="other_labels_3"  value="<%= @other_label3 %>">
+    </div>
+      <div class="md:w-1/2 px-3">
+        <input class="string-input" id="other_fees_3" placeholder="฿฿฿฿" type="number" name="other_fees_3" value="<%= @other_fee3 %>">
+    </div>
+  </div>
+
+   <div class="-mx-3 md:flex mb-6">
+      <div class="md:w-1/2 px-3">
+        <input class="string-input" id="other_labels_4" placeholder="xxxx" type="text" name="other_labels_4"  value="<%= @other_label4 %>">
+    </div>
+      <div class="md:w-1/2 px-3">
+        <input class="string-input" id="other_fees_4" placeholder="฿฿฿฿" type="number" name="other_fees_4" value="<%= @other_fee4 %>">
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-full px-3">
+      <label class="input-label" for="remarks">
+        หมายเหตุ
+      </label>
+        <input class="string-input" id="remarks" placeholder="ข้อมูลเพิ่มเติม" type="text" name="remarks" value="<%= @monthlyBooking.remarks %>">
+    </div>
+  </div>
+
+<!--Button-->
+
+  <div class="-mx-0 mb-1 md:flex mr-2 justify-end">
+    <button class="btn-form-submit" type="submit">
+      ต่อไป
+    </button>
+  </div>
+
+<!--Button-->
+
+</form>
+
+</div>
+
+  <div class="flex justify-center">
+    <p class="copyright-text">
+      &copy;2020 Horganice. All rights reserved.
+    </p>
+  </div>
+
+<!-- component -->
+
+<!-- DEBUG -->
+<%= if @debug do %>
+<div class="flex justify-center">
+  <p class="copyright-text">
+    :: DEBUG ::<br>
+    :: customer ::
+    <br>id_number : <u><%= @customer.idNumber %></u>
+    &nbsp;&nbsp;firstname : <u><%= @customer.firstName %></u>
+    &nbsp;&nbsp;lastname : <u><%= @customer.lastName %></u><br>
+    :: monthlyBooking ::
+    <br>check_in : <u><%= @monthlyBooking.checkIn %></u>
+    &nbsp;&nbsp;check_out : <u><%= @monthlyBooking.checkOut%></u>
+    <br>
+    &nbsp;&nbsp;advance_payment : <u><%= @monthlyBooking.advancePayment %></u>
+    &nbsp;&nbsp;deposit : <u><%= @monthlyBooking.deposit %></u>
+    &nbsp;&nbsp;rent_fees : <u><%= @monthlyBooking.rentFees %></u>
+    &nbsp;&nbsp;service_fees : <u><%= @monthlyBooking.serviceFees %></u>
+    &nbsp;&nbsp;keycard_fees : <u><%= @monthlyBooking.keycardFees %></u>
+    <br>
+    &nbsp;&nbsp;other_labels : <u><%= @monthlyBooking.otherLabels %></u>
+    &nbsp;&nbsp;other_fees : <u><%= @monthlyBooking.otherFees %></u>
+    &nbsp;&nbsp;remarks : <u><%= @monthlyBooking.remarks %></u>
+
+  </p>
+</div>
+<% end %>
+<!-- DEBUG -->
+
+</div>
+</div>
+</div>
+</section>

@@ -1,0 +1,51 @@
+<h1>Listing Monthlyinvoices</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ApartmanWeb.MonthlyInvoiceLive.FormComponent,
+    id: @monthly_invoice.id || :new,
+    title: @page_title,
+    action: @live_action,
+    monthly_invoice: @monthly_invoice
+    # return_to: Routes.monthly_invoice_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>BillCycle</th>
+      <th>AdvancePayment</th>
+      <th>WaterStart</th>
+      <th>WaterEnd</th>
+      <th>WaterUnit</th>
+      <th>ElectricStart</th>
+      <th>EletricEnd</th>
+      <th>OtherLabels</th>
+      <th>OtherFees</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="monthlyinvoices">
+    <%= for monthly_invoice <- @monthlyinvoices do %>
+      <tr id="monthly_invoice-<%= monthly_invoice.id %>">
+        <td><%= monthly_invoice.bill_cycle %></td>
+        <td><%= monthly_invoice.advance_payment %></td>
+        <td><%= monthly_invoice.water_start %></td>
+        <td><%= monthly_invoice.water_end %></td>
+        <td><%= monthly_invoice.water_unit %></td>
+        <td><%= monthly_invoice.electric_start %></td>
+        <td><%= monthly_invoice.eletric_end %></td>
+        <td><%= monthly_invoice.other_labels %></td>
+        <td><%= monthly_invoice.other_fees %></td>
+
+        <td>
+          <%# <span><%= live_redirect "Show", to: Routes.monthly_invoice_show_path(@socket, :show, monthly_invoice) </span> %>
+          <%# <span><%= live_patch "Edit", to: Routes.monthly_invoice_index_path(@socket, :edit, monthly_invoice) </span> %>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: monthly_invoice.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= # live_patch "New Monthly invoice", to: Routes.monthly_invoice_index_path(@socket, :new) %></span>

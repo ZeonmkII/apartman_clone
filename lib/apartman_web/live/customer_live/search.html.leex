@@ -1,0 +1,81 @@
+<section class="page-bg">
+<div class="container page-container">
+<div class="w-2/3">
+<!-- component -->
+<h1 class="page-title-header">🔍 <%= @page_title %> :: J-Resident</h1><br>
+<div class="div-main-form">
+  <form phx-submit="submit" phx-change="update">
+    <div class="-mx-3 md:flex mb-6">
+      <div class="md:w-full px-3">
+        <label class="input-label" for="input_id_number">
+          เลขประจำตัวประชาชน<span class="required-star">*</span>
+        </label>
+        <input class="string-input" id="input_id_number" placeholder="xxxxxxxxxxxxx" type="text" name="input_id_number" value="<%= @id_number %>" required autofocus autocomplete="off">
+        <%= if @error do %>
+          <p class="input-error-label"><%= @error_msg %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="-mx-0 mb-1 md:flex mr-2 justify-between">
+        <button class="btn-form-submit bg-purple-600 hover:bg-purple-500 " phx-click="new_customer" type="button">
+          ➕ ลูกค้าใหม่
+        </button>
+        <button class="btn-form-submit" type="submit">
+          🔎 ค้นหา
+        </button>
+    </div>
+  </form>
+</div>
+  <div class="flex justify-center">
+    <p class="copyright-text">
+    &copy;2020 Horganice. All rights reserved.
+    </p>
+  </div>
+<!-- component -->
+<!-- DEBUG -->
+<%= if @debug do %>
+  <div class="flex justify-center">
+    <p class="copyright-text">
+      <br>:: DEBUG Input ::
+      <br>input_id_number : <%= @id_number %>
+    </p>
+  </div>
+  <div class="flex justify-center">
+    <p class="copyright-text">
+    <br><br>:: DEBUG Database ::
+    </p>
+  </div>
+  <table class="table-fixed">
+    <thead>
+      <tr class="bg-gray-100">
+        <th class="px-4 py-2">ID Number</th>
+        <th class="px-4 py-2">Name</th>
+        <th class="px-4 py-2">Date of Birth</th>
+        <th class="px-4 py-2">Religion</th>
+        <th class="px-4 py-2">Nationality</th>
+        <th class="px-4 py-2">Sex</th>
+        <th class="px-4 py-2">Action</th>
+      </tr>
+    <thead>
+    <tbody id="customers">
+    <%= for customer <- @customers do %>
+      <tr class="bg-gray-100 hover:bg-gray-200" id="customer-<%= customer.id %>">
+        <td class="border hover:font-semibold px-4 py-2"><%= customer.id_number %></td>
+        <td class="border hover:font-semibold px-4 py-2"><%= customer.first_name %> <%= customer.last_name %></td>
+        <td class="border hover:font-semibold px-4 py-2"><%= customer.date_of_birth %></td>
+        <td class="border hover:font-semibold px-4 py-2"><%= customer.faith %></td>
+        <td class="border hover:font-semibold px-4 py-2"><%= customer.nationality %></td>
+        <td class="border hover:font-semibold px-4 py-2"><%= customer.gender %></td>
+        <td class="border hover:font-semibold px-4 py-2">
+          <center><%= link "🗑️", to: "#", phx_click: "delete", phx_value_id: customer.id, data: [confirm: "คอนเฟิร์ม :: ต้องการลบข้อมูลลูกค้า ?"] %></center>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  </div>
+<% end %>
+<!-- DEBUG -->
+</div>
+</div>
+</section>

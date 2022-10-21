@@ -1,0 +1,203 @@
+<section class="page-bg">
+<div class="md:flex py-3 mx:auto my:auto">
+<div class="container page-container">
+<div class="w-3/4">
+<!-- component -->
+<h1 class="page-title-header"> <%= @page_title %> :: J-Resident</h1><br>
+
+<div class="div-main-form">
+
+<form phx-submit="submit" phx-change="update">
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="first_name">
+        ชื่อ
+      </label>
+        <input class="string-input-read" id="first_name" type="text" name="first_name" value="<%= @customer.firstName %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="last_name">
+        นามสกุล
+      </label>
+        <input class="string-input-read" id="last_name" type="text" name="last_name" value="<%= @customer.lastName %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+  <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="date_signed">
+        วันที่เซ็นสัญญา<span class="required-star">*</span>
+      </label>
+        <input class="string-input-read" id="date_signed" type="date" name="date_signed" value="<%= @contract.dateSigned %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="check_in">
+        วันที่เริ่มสัญญา<span class="required-star">*</span>
+      </label>
+        <input class="string-input-read" id="check_in" type="date" name="check_in" value="<%= @contract.checkIn %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="check_out">
+        วันที่สิ้นสุดสัญญา<span class="required-star">*</span>
+      </label>
+        <input class="string-input-read" id="check_out" type="date" name="check_out" value="<%= @contract.checkOut %>" disabled>
+    </div>
+  </div>
+
+   <div class="-mx-3 md:flex mb-6">
+     <div class="md:w-1/2 px-3">
+      <label class="input-label" for="advance_payment">
+        Advance Payment<span class="required-star">*</span>
+      </label>
+        <input class="string-input-read" id="advance_payment" placeholder="฿฿฿฿" type="number" name="advance_payment" value="<%= @contract.advancePayment %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="deposit">
+        Deposit<span class="required-star">*</span>
+      </label>
+        <input class="string-input-read" id="deposit" placeholder="฿฿฿฿" type="number" name="deposit" value="<%= @contract.deposit %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+      <div class="md:w-1/2 px-3">
+      <label class="input-label" for="rent_fees">
+        Rent fees<span class="required-star">*</span>
+      </label>
+        <input class="string-input-read" id="rent_fees" placeholder="฿฿฿฿" type="number" name="rent_fees" value="<%= @contract.rentFees %>" disabled>
+    </div>
+      <div class="md:w-1/2 px-3">
+      <label class="input-label" for="service_fees">
+        Service fees
+      </label>
+        <input class="string-input-read" id="service_fees" placeholder="฿฿฿฿" type="number" name="service_fees" value="<%= @contract.serviceFees %>" disabled>
+    </div>
+     <div class="md:w-1/2 px-3">
+      <label class="input-label" for="keycard_fees">
+        Keycard fees<span class="required-star">*</span>
+      </label>
+        <input class="string-input-read" id="keycard_fees" placeholder="฿฿฿฿" type="number" name="keycard_fees" value="<%= @contract.keycardFees %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+
+    <div class="md:w-1/5 px-3">
+      <label class="input-label" for="room_number">
+        เลขห้อง|คีย์การ์ด<span class="required-star">*</span>
+      </label>
+    </div>
+    <div class="-mx-3 md:flex px-3">
+        <input class="string-input-read" id="room_number" type="text" name="room_number" value="<%= @contract.roomNumber %>" disabled>&nbsp;&nbsp;
+        <input class="string-input-read" id="keycard_number" type="text" name="keycard_number" value="<%= @contract.keycardNumber %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+      <div class="md:w-1/2 px-3">
+      <label class="input-label" for="meter_electric">
+        มิเตอร์ ค่าไฟฟ้า<span class="required-star">*</span>
+      </label>
+        <input class="string-input-read" id="meter_electric" placeholder="฿฿฿฿" type="number" name="meter_electric" value="<%= @contract.meterElectric %>" disabled>
+    </div>
+      <div class="md:w-1/2 px-3">
+      <label class="input-label" for="meter_water">
+        มิเตอร์ ค่าน้ำ<span class="required-star">*</span>
+      </label>
+        <input class="string-input-read" id="meter_water" placeholder="฿฿฿฿" type="number" name="meter_water" value="<%= @contract.meterWater %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-1">
+      <div class="md:w-full px-3">
+      <label class="input-label" for="other_labels_1">
+        Other Label
+      </label>
+        <input class="string-input-read" id="other_labels_1" type="text" name="other_labels_1" value="<%= @contract.otherLabels %>" disabled>
+    </div>
+  </div>
+   <div class="-mx-3 md:flex mb-1">
+      <div class="md:w-full px-3">
+      <label class="input-label" for="other_fees_1">
+        Other Fees
+      </label>
+        <input class="string-input-read" id="other_fees_1" type="text" name="other_fees_1"  value="<%= @contract.otherFees %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-full px-3">
+      <label class="input-label" for="remarks">
+        หมายเหตุ
+      </label>
+        <input class="string-input-read" id="remarks" placeholder="ข้อมูลเพิ่มเติม" type="text" name="remarks" value="<%= @contract.remarks %>" disabled>
+    </div>
+  </div>
+
+<!--Button-->
+
+  <div class="-mx-0 mb-1 md:flex mr-2 justify-end">
+    <button class="btn-form-submit" type="submit">
+      ทำสัญญา
+    </button>
+  </div>
+
+<!--Button-->
+
+</form>
+
+</div>
+
+  <div class="flex justify-center">
+    <p class="copyright-text">
+      &copy;2020 Horganice. All rights reserved.
+    </p>
+  </div>
+
+<!-- component -->
+
+<!-- DEBUG -->
+<%= if @debug do %>
+<div class="flex justify-center">
+  <p class="copyright-text">
+    :: DEBUG ::<br>
+    :: Variables ::
+    <br>Pre-Booked : <u><%= @prebooked %></u>
+    &nbsp;&nbsp;Booking ID : <u><%= @booking_id %></u><br>
+    :: Customer ::
+    <br>id_number : <u><%= @customer.idNumber %></u>
+    &nbsp;&nbsp;firstname : <u><%= @customer.firstName %></u>
+    &nbsp;&nbsp;lastname : <u><%= @customer.lastName %></u><br>
+    :: Contract ::
+    <br>date_signed : <u><%= @contract.dateSigned%></u>
+    &nbsp;&nbsp;check_in : <u><%= @contract.checkIn %></u>
+    &nbsp;&nbsp;check_out : <u><%= @contract.checkOut%></u>
+    <br>
+    &nbsp;&nbsp;advance_payment : <u><%= @contract.advancePayment %></u>
+    &nbsp;&nbsp;deposit : <u><%= @contract.deposit %></u>
+    &nbsp;&nbsp;rent_fees : <u><%= @contract.rentFees %></u>
+    &nbsp;&nbsp;service_fees : <u><%= @contract.serviceFees %></u>
+    &nbsp;&nbsp;keycard_fees : <u><%= @contract.keycardFees %></u>
+    <br>room : <u><%= @contract.roomNumber %></u>
+    &nbsp;&nbsp;keycard : <u><%= @contract.keycardNumber %></u>
+    &nbsp;&nbsp;meter_electric : <u><%= @contract.meterElectric %></u>
+    &nbsp;&nbsp;meter_water : <u><%= @contract.meterWater %></u>
+    <br>
+    &nbsp;&nbsp;other_labels : <u><%= @contract.otherLabels %></u>
+    &nbsp;&nbsp;other_fees : <u><%= @contract.otherFees %></u>
+    &nbsp;&nbsp;remarks : <u><%= @contract.remarks %></u><br>
+    :: MonthlyRent ::
+    <br>bCurrent : <u><%= @monthlyRent.bCurrent %></u>
+    &nbsp;&nbsp;bTenant : <u><%= @monthlyRent.bTenant %></u>
+    &nbsp;&nbsp;bContract : <u><%= @monthlyRent.bContract %></u>
+
+  </p>
+</div>
+<% end %>
+<!-- DEBUG -->
+
+</div>
+</div>
+</div>
+</section>

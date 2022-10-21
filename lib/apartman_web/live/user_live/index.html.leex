@@ -1,0 +1,51 @@
+<h1>Listing Users</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ApartmanWeb.UserLive.FormComponent,
+    id: @user.id || :new,
+    title: @page_title,
+    action: @live_action,
+    user: @user
+    # return_to: Routes.user_index_path(@socket, :index) %>
+<% end %>
+
+<table class="table-fixed">
+  <thead>
+    <tr class="bg-gray-100">
+      <th class="px-4 py-2">Username</th>
+      <th class="px-4 py-2">Firstname</th>
+      <th class="px-4 py-2">Lastname</th>
+      <th class="px-4 py-2">E-Mail</th>
+      <th class="px-4 py-2">Phone</th>
+      <th class="px-4 py-2">Line</th>
+      <th class="px-4 py-2">Role</th>
+      <th class="px-4 py-2">Active?</th>
+
+      <th>📂</th>
+    </tr>
+  </thead>
+  <tbody id="users">
+    <%= for user <- @users do %>
+      <tr class="hover:bg-gray-200" id="user-<%= user.id %>">
+        <td class="border hover:font-semibold px-4 py-2"><%= user.user_name %></td>
+        <td class="border hover:font-semibold px-4 py-2"><%= user.first_name %></td>
+        <td class="border hover:font-semibold px-4 py-2"><%= user.last_name %></td>
+        <td class="border hover:font-semibold px-4 py-2">📧 <%= user.email %></td>
+        <td class="border hover:font-semibold px-4 py-2">📞 <%= user.phone %></td>
+        <td class="border hover:font-semibold px-4 py-2"><%= user.line %></td>
+        <td class="border hover:font-semibold px-4 py-2"><%= user.role %></td>
+        <td class="border hover:font-semibold px-4 py-2"><%= user.b_active %></td>
+
+        <td>
+          <%# <span><%= live_redirect "Show", to: Routes.user_show_path(@socket, :show, user) </span> %>
+          <%# <span><%= live_patch "Edit", to: Routes.user_index_path(@socket, :edit, user) </span> %>
+          <span><%= link "📖", to: "#", phx_click: "show", phx_value_id: user.id%></span>
+          <span><%= link "✏", to: "#", phx_click: "edit", phx_value_id: user.id%></span>
+          <span><%= link "🗑", to: "#", phx_click: "delete", phx_value_id: user.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= # live_patch "New User", to: Routes.user_index_path(@socket, :new) %></span>

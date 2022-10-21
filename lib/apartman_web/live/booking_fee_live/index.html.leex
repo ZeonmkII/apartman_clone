@@ -1,0 +1,35 @@
+<h1>Listing Bookingfees</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ApartmanWeb.BookingFeeLive.FormComponent,
+    id: @booking_fee.id || :new,
+    title: @page_title,
+    action: @live_action,
+    booking_fee: @booking_fee
+    # return_to: Routes.booking_fee_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>BookingFees</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="bookingfees">
+    <%= for booking_fee <- @bookingfees do %>
+      <tr id="booking_fee-<%= booking_fee.id %>">
+        <td><%= booking_fee.booking_fees %></td>
+
+        <td>
+          <%# <span><%= live_redirect "Show", to: Routes.booking_fee_show_path(@socket, :show, booking_fee) </span> %>
+          <%# <span><%= live_patch "Edit", to: Routes.booking_fee_index_path(@socket, :edit, booking_fee) </span> %>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: booking_fee.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= # live_patch "New Booking fee", to: Routes.booking_fee_index_path(@socket, :new) %></span>

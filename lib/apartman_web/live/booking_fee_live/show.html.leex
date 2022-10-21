@@ -1,0 +1,22 @@
+<h1>Show Booking fee</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, ApartmanWeb.BookingFeeLive.FormComponent,
+    id: @booking_fee.id,
+    title: @page_title,
+    action: @live_action,
+    booking_fee: @booking_fee
+    # return_to: Routes.booking_fee_show_path(@socket, :show, @booking_fee) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Bookingfees:</strong>
+    <%= @booking_fee.bookingFees %>
+  </li>
+
+</ul>
+
+<span><%= # live_patch "Edit", to: Routes.booking_fee_show_path(@socket, :edit, @booking_fee), class: "button" %></span>
+<span><%= # live_redirect "Back", to: Routes.booking_fee_index_path(@socket, :index) %></span>

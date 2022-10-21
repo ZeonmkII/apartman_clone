@@ -1,0 +1,62 @@
+<h1>Show Monthly invoice</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, ApartmanWeb.MonthlyInvoiceLive.FormComponent,
+    id: @monthly_invoice.id,
+    title: @page_title,
+    action: @live_action,
+    monthly_invoice: @monthly_invoice
+    # return_to: Routes.monthly_invoice_show_path(@socket, :show, @monthly_invoice) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Billcycle:</strong>
+    <%= @monthly_invoice.billCycle %>
+  </li>
+
+  <li>
+    <strong>Advancepayment:</strong>
+    <%= @monthly_invoice.advancePayment %>
+  </li>
+
+  <li>
+    <strong>Waterstart:</strong>
+    <%= @monthly_invoice.waterStart %>
+  </li>
+
+  <li>
+    <strong>Waterend:</strong>
+    <%= @monthly_invoice.waterEnd %>
+  </li>
+
+  <li>
+    <strong>Waterunit:</strong>
+    <%= @monthly_invoice.waterUnit %>
+  </li>
+
+  <li>
+    <strong>Electricstart:</strong>
+    <%= @monthly_invoice.electricStart %>
+  </li>
+
+  <li>
+    <strong>Eletricend:</strong>
+    <%= @monthly_invoice.eletricEnd %>
+  </li>
+
+  <li>
+    <strong>Otherlabels:</strong>
+    <%= @monthly_invoice.otherLabels %>
+  </li>
+
+  <li>
+    <strong>Otherfees:</strong>
+    <%= @monthly_invoice.otherFees %>
+  </li>
+
+</ul>
+
+<span><%= # live_patch "Edit", to: Routes.monthly_invoice_show_path(@socket, :edit, @monthly_invoice), class: "button" %></span>
+<span><%= # live_redirect "Back", to: Routes.monthly_invoice_index_path(@socket, :index) %></span>

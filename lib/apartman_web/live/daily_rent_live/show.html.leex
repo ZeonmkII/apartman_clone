@@ -1,0 +1,22 @@
+<h1>Show Daily rent</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, ApartmanWeb.DailyRentLive.FormComponent,
+    id: @daily_rent.id,
+    title: @page_title,
+    action: @live_action,
+    daily_rent: @daily_rent
+    # return_to: Routes.daily_rent_show_path(@socket, :show, @daily_rent) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Bcurrent:</strong>
+    <%= @daily_rent.bCurrent %>
+  </li>
+
+</ul>
+
+<span><%= # live_patch "Edit", to: Routes.daily_rent_show_path(@socket, :edit, @daily_rent), class: "button" %></span>
+<span><%= # live_redirect "Back", to: Routes.daily_rent_index_path(@socket, :index) %></span>

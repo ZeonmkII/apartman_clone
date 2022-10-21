@@ -1,0 +1,43 @@
+<h1>Listing Dailyinvoices</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ApartmanWeb.DailyInvoiceLive.FormComponent,
+    id: @daily_invoice.id || :new,
+    title: @page_title,
+    action: @live_action,
+    daily_invoice: @daily_invoice
+    # return_to: Routes.daily_invoice_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Deposit</th>
+      <th>AdvancePayment</th>
+      <th>KeycardFees</th>
+      <th>OtherLabels</th>
+      <th>OtherFees</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="dailyinvoices">
+    <%= for daily_invoice <- @dailyinvoices do %>
+      <tr id="daily_invoice-<%= daily_invoice.id %>">
+        <td><%= daily_invoice.deposit %></td>
+        <td><%= daily_invoice.advance_payment %></td>
+        <td><%= daily_invoice.keycard_fees %></td>
+        <td><%= daily_invoice.other_labels %></td>
+        <td><%= daily_invoice.other_fees %></td>
+
+        <td>
+          <%# <span><%= live_redirect "Show", to: Routes.daily_invoice_show_path(@socket, :show, daily_invoice) </span> %>
+          <%# <span><%= live_patch "Edit", to: Routes.daily_invoice_index_path(@socket, :edit, daily_invoice) </span> %>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: daily_invoice.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= # live_patch "New Daily invoice", to: Routes.daily_invoice_index_path(@socket, :new) %></span>

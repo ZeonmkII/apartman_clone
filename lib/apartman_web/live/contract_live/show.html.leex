@@ -1,0 +1,107 @@
+<h1>Show Contract</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, ApartmanWeb.ContractLive.FormComponent,
+    id: @contract.id,
+    title: @page_title,
+    action: @live_action,
+    contract: @contract
+    # return_to: Routes.contract_show_path(@socket, :show, @contract) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Contractid:</strong>
+    <%= @contract.contractId %>
+  </li>
+
+  <li>
+    <strong>Datesigned:</strong>
+    <%= @contract.dateSigned %>
+  </li>
+
+  <li>
+    <strong>Checkin:</strong>
+    <%= @contract.checkIn %>
+  </li>
+
+  <li>
+    <strong>Checkout:</strong>
+    <%= @contract.checkOut %>
+  </li>
+
+  <li>
+    <strong>Durationmonth:</strong>
+    <%= @contract.durationMonth %>
+  </li>
+
+  <li>
+    <strong>Durationday:</strong>
+    <%= @contract.durationDay %>
+  </li>
+
+  <li>
+    <strong>Roomnumber:</strong>
+    <%= @contract.roomNumber %>
+  </li>
+
+  <li>
+    <strong>Rentfees:</strong>
+    <%= @contract.rentFees %>
+  </li>
+
+  <li>
+    <strong>Servicefees:</strong>
+    <%= @contract.serviceFees %>
+  </li>
+
+  <li>
+    <strong>Deposit:</strong>
+    <%= @contract.deposit %>
+  </li>
+
+  <li>
+    <strong>Advancepayment:</strong>
+    <%= @contract.advancePayment %>
+  </li>
+
+  <li>
+    <strong>Keycardfees:</strong>
+    <%= @contract.keycardFees %>
+  </li>
+
+  <li>
+    <strong>Keycardnumber:</strong>
+    <%= @contract.keycardNumber %>
+  </li>
+
+  <li>
+    <strong>Otherlabels:</strong>
+    <%= @contract.otherLabels %>
+  </li>
+
+  <li>
+    <strong>Otherfees:</strong>
+    <%= @contract.otherFees %>
+  </li>
+
+  <li>
+    <strong>Meterwater:</strong>
+    <%= @contract.meterWater %>
+  </li>
+
+  <li>
+    <strong>Meterelectric:</strong>
+    <%= @contract.meterElectric %>
+  </li>
+
+  <li>
+    <strong>Remarks:</strong>
+    <%= @contract.remarks %>
+  </li>
+
+</ul>
+
+<span><%= # live_patch "Edit", to: Routes.contract_show_path(@socket, :edit, @contract), class: "button" %></span>
+<span><%= # live_redirect "Back", to: Routes.contract_index_path(@socket, :index) %></span>

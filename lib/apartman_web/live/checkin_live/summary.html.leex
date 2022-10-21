@@ -1,0 +1,152 @@
+<section class="page-bg">
+<div class="md:flex py-3 mx:auto my:auto">
+<div class="container page-container">
+<div class="w-3/4">
+<!-- component -->
+<h1 class="page-title-header"> <%= @page_title %> :: J-Resident</h1><br>
+
+<div class="div-main-form">
+
+<form phx-submit="submit" phx-change="update">
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="first_name">
+        ชื่อ
+      </label>
+        <input class="string-input-read" id="first_name" type="text" name="first_name" value="<%= @customer.firstName %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="last_name">
+        นามสกุล
+      </label>
+        <input class="string-input-read" id="last_name" type="text" name="last_name" value="<%= @customer.lastName %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/5 px-3">
+      <label class="input-label" for="room_number">
+        เลขห้อง<span class="required-star">*</span>
+      </label>
+    </div>
+    <div class="-mx-3 md:flex px-3">
+        <input class="string-input-read" id="room_number" type="text" name="room_number" value="<%= @checkin.roomNumber %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-full px-3">
+      <label class="input-label" for="deposit">
+        เงินประกัน
+      </label>
+        <input class="string-input-read" id="deposit" placeholder="฿฿฿฿" type="number" name="deposit" value="<%= @checkin.deposit %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="check_in">
+        วันที่เข้าพัก<span class="required-star">*</span>
+      </label>
+        <input class="string-input-read" id="check_in" type="date" name="check_in" value="<%= @checkin.checkIn %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="check_out">
+        วันที่ออก<span class="required-star">*</span>
+      </label>
+        <input class="string-input-read" id="check_out" type="date" name="check_out" value="<%= @checkin.checkOut %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="time_in">
+        เวลาเข้า<span class="required-star">*</span>
+      </label>
+        <input class="string-input-read" id="time_in" type="time" name="time_in" value="<%= @checkin.timeIn %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="time_out">
+        เวลาออก
+      </label>
+        <input class="string-input-read" id="time_out" type="time" name="time_out" value="<%= @checkin.timeOut %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="from">
+        มาจาก<span class="required-star">*</span>
+      </label>
+        <input class="string-input-read" id="from" placeholder="ชื่อสถานที่ จังหวัด หรือ ประเทศ" type="text" name="from" value="<%= @checkin.from %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="to">
+        ไปที่<span class="required-star">*</span>
+      </label>
+        <input class="string-input-read" id="to" placeholder="ชื่อสถานที่ จังหวัด หรือ ประเทศ" type="text" name="to" value="<%= @checkin.to %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-full px-3">
+      <label class="input-label" for="remarks">
+        หมายเหตุ
+      </label>
+        <input class="string-input-read" id="remarks" placeholder="ข้อมูลเพิ่มเติม" type="text" name="remarks" value="<%= @checkin.remarks %>" disabled>
+    </div>
+  </div>
+
+<!--Button-->
+
+  <div class="-mx-0 mb-1 md:flex mr-2 justify-end">
+    <button class="btn-form-submit" type="submit">
+      ทำการเข้าพัก
+    </button>
+  </div>
+
+<!--Button-->
+
+</form>
+
+</div>
+
+  <div class="flex justify-center">
+    <p class="copyright-text">
+      &copy;2020 Horganice. All rights reserved.
+    </p>
+  </div>
+
+<!-- component -->
+
+<!-- DEBUG -->
+<%= if @debug do %>
+<div class="flex justify-center">
+  <p class="copyright-text">
+    :: DEBUG ::<br>
+    :: Variables ::
+    <br>Booking ID : <u><%= @booking_id %></u><br>
+    :: Customer ::
+    <br>id_number : <u><%= @customer.idNumber %></u>
+    &nbsp;&nbsp;firstname : <u><%= @customer.firstName %></u>
+    &nbsp;&nbsp;lastname : <u><%= @customer.lastName %></u><br>
+    :: CheckIn ::
+    <br>RoomNumber : <u><%= @checkin.roomNumber %></u>
+    &nbsp;&nbsp;deposit : <u><%= @checkin.deposit%></u>
+    <br>Check-In : <u><%= @checkin.checkIn %></u>
+    &nbsp;&nbsp;Check-Out : <u><%= @checkin.checkOut%></u>
+    &nbsp;&nbsp;Time-In : <u><%= @checkin.timeIn%></u>
+    &nbsp;&nbsp;Time-Out : <u><%= @checkin.timeOut%></u>
+    <br>From : <u><%= @checkin.from %></u>
+    &nbsp;&nbsp;To : <u><%= @checkin.to%></u>
+    &nbsp;&nbsp;Remarks : <u><%= @checkin.remarks %></u>
+  </p>
+</div>
+<% end %>
+<!-- DEBUG -->
+
+</div>
+</div>
+</div>
+</section>

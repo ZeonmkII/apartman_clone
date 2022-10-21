@@ -1,0 +1,69 @@
+<h1>Listing Contracts</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ApartmanWeb.ContractLive.FormComponent,
+    id: @contract.id || :new,
+    title: @page_title,
+    action: @live_action,
+    contract: @contract
+    # return_to: Routes.contract_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ContractID</th>
+      <th>Signed Date</th>
+      <th>Check-In</th>
+      <th>Check-Out</th>
+      <th>Duration(Month)</th>
+      <th>Duration(Day)</th>
+      <th>Room</th>
+      <th>RentFees</th>
+      <th>ServiceFees</th>
+      <th>Deposit</th>
+      <th>AdvancePayment</th>
+      <th>KeycardFees</th>
+      <th>Keycard</th>
+      <th>OtherLabels</th>
+      <th>OtherFees</th>
+      <th>MeterWater</th>
+      <th>MeterElectric</th>
+      <th>Remarks</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="contracts">
+    <%= for contract <- @contracts do %>
+      <tr id="contract-<%= contract.id %>">
+        <td><%= contract.contract_id %></td>
+        <td><%= contract.date_signed %></td>
+        <td><%= contract.check_in %></td>
+        <td><%= contract.check_out %></td>
+        <td><%= contract.duration_month %></td>
+        <td><%= contract.duration_day %></td>
+        <td><%= contract.room_number %></td>
+        <td><%= contract.rent_fees %></td>
+        <td><%= contract.service_fees %></td>
+        <td><%= contract.deposit %></td>
+        <td><%= contract.advance_payment %></td>
+        <td><%= contract.keycard_fees %></td>
+        <td><%= contract.keycard_number %></td>
+        <td><%= contract.other_labels %></td>
+        <td><%= contract.other_fees %></td>
+        <td><%= contract.meter_water %></td>
+        <td><%= contract.meter_electric %></td>
+        <td><%= contract.remarks %></td>
+
+        <td>
+          <%# <span><%= live_redirect "Show", to: Routes.contract_show_path(@socket, :show, contract) </span> %>
+          <%# <span><%= live_patch "Edit", to: Routes.contract_index_path(@socket, :edit, contract) </span> %>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: contract.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= # live_patch "New Contract", to: Routes.contract_index_path(@socket, :new) %></span>

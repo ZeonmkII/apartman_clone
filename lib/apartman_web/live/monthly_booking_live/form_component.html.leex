@@ -1,0 +1,62 @@
+<h2><%= @title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "monthly_booking-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= label f, :bookingId %>
+  <%= text_input f, :bookingId %>
+  <%= error_tag f, :bookingId %>
+
+  <%= label f, :checkIn %>
+  <%= date_select f, :checkIn %>
+  <%= error_tag f, :checkIn %>
+
+  <%= label f, :checkOut %>
+  <%= date_select f, :checkOut %>
+  <%= error_tag f, :checkOut %>
+
+  <%= label f, :durationMonth %>
+  <%= number_input f, :durationMonth %>
+  <%= error_tag f, :durationMonth %>
+
+  <%= label f, :durationDay %>
+  <%= number_input f, :durationDay %>
+  <%= error_tag f, :durationDay %>
+
+  <%= label f, :remarks %>
+  <%= text_input f, :remarks %>
+  <%= error_tag f, :remarks %>
+
+  <%= label f, :rentFees %>
+  <%= text_input f, :rentFees %>
+  <%= error_tag f, :rentFees %>
+
+  <%= label f, :serviceFees %>
+  <%= text_input f, :serviceFees %>
+  <%= error_tag f, :serviceFees %>
+
+  <%= label f, :deposit %>
+  <%= text_input f, :deposit %>
+  <%= error_tag f, :deposit %>
+
+  <%= label f, :advancePayment %>
+  <%= text_input f, :advancePayment %>
+  <%= error_tag f, :advancePayment %>
+
+  <%= label f, :keycardFees %>
+  <%= text_input f, :keycardFees %>
+  <%= error_tag f, :keycardFees %>
+
+  <%= label f, :otherLabels %>
+  <%= text_input f, :otherLabels %>
+  <%= error_tag f, :otherLabels %>
+
+  <%= label f, :otherFees %>
+  <%= text_input f, :otherFees %>
+  <%= error_tag f, :otherFees %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>

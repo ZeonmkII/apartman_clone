@@ -1,0 +1,82 @@
+<h1>Show Monthly booking</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, ApartmanWeb.MonthlyBookingLive.FormComponent,
+    id: @monthly_booking.id,
+    title: @page_title,
+    action: @live_action,
+    monthly_booking: @monthly_booking
+    # return_to: Routes.monthly_booking_show_path(@socket, :show, @monthly_booking) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Bookingid:</strong>
+    <%= @monthly_booking.bookingId %>
+  </li>
+
+  <li>
+    <strong>Checkin:</strong>
+    <%= @monthly_booking.checkIn %>
+  </li>
+
+  <li>
+    <strong>Checkout:</strong>
+    <%= @monthly_booking.checkOut %>
+  </li>
+
+  <li>
+    <strong>Durationmonth:</strong>
+    <%= @monthly_booking.durationMonth %>
+  </li>
+
+  <li>
+    <strong>Durationday:</strong>
+    <%= @monthly_booking.durationDay %>
+  </li>
+
+  <li>
+    <strong>Remarks:</strong>
+    <%= @monthly_booking.remarks %>
+  </li>
+
+  <li>
+    <strong>Rentfees:</strong>
+    <%= @monthly_booking.rentFees %>
+  </li>
+
+  <li>
+    <strong>Servicefees:</strong>
+    <%= @monthly_booking.serviceFees %>
+  </li>
+
+  <li>
+    <strong>Deposit:</strong>
+    <%= @monthly_booking.deposit %>
+  </li>
+
+  <li>
+    <strong>Advancepayment:</strong>
+    <%= @monthly_booking.advancePayment %>
+  </li>
+
+  <li>
+    <strong>Keycardfees:</strong>
+    <%= @monthly_booking.keycardFees %>
+  </li>
+
+  <li>
+    <strong>Otherlabels:</strong>
+    <%= @monthly_booking.otherLabels %>
+  </li>
+
+  <li>
+    <strong>Otherfees:</strong>
+    <%= @monthly_booking.otherFees %>
+  </li>
+
+</ul>
+
+<span><%= # live_patch "Edit", to: Routes.monthly_booking_show_path(@socket, :edit, @monthly_booking), class: "button" %></span>
+<span><%= # live_redirect "Back", to: Routes.monthly_booking_index_path(@socket, :index) %></span>

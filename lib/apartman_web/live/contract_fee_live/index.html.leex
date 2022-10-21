@@ -1,0 +1,43 @@
+<h1>Listing Contractfees</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ApartmanWeb.ContractFeeLive.FormComponent,
+    id: @contract_fee.id || :new,
+    title: @page_title,
+    action: @live_action,
+    contract_fee: @contract_fee
+    # return_to: Routes.contract_fee_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Deposit</th>
+      <th>AdvancePayment</th>
+      <th>KeycardFees</th>
+      <th>OtherLabels</th>
+      <th>OtherFees</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="contractfees">
+    <%= for contract_fee <- @contractfees do %>
+      <tr id="contract_fee-<%= contract_fee.id %>">
+        <td><%= contract_fee.deposit %></td>
+        <td><%= contract_fee.advance_payment %></td>
+        <td><%= contract_fee.keycard_fees %></td>
+        <td><%= contract_fee.other_labels %></td>
+        <td><%= contract_fee.other_fees %></td>
+
+        <td>
+          <%# <span><%= live_redirect "Show", to: Routes.contract_fee_show_path(@socket, :show, contract_fee) </span> %>
+          <%# <span><%= live_patch "Edit", to: Routes.contract_fee_index_path(@socket, :edit, contract_fee) </span> %>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: contract_fee.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= # live_patch "New Contract fee", to: Routes.contract_fee_index_path(@socket, :new) %></span>

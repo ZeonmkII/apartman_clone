@@ -1,0 +1,143 @@
+<section class="page-bg">
+<div class="container page-container">
+<div class="w-3/4">
+<!-- component -->
+<h1 class="page-title-header">📝 <%= @page_title %> :: J-Resident</h1><br>
+<div class="div-main-form">
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-full px-3">
+      <label class="input-label" for="id_number">
+        เลขประจำตัวประชาชน<span class="required-star">*</span>
+      </label>
+      <input class="string-input" id="id_number" placeholder="xxxxxxxxxxxxx" type="text" name="id_number" required autofocus>
+      <%# <p class="input-error-label">❗ จำเป็นต้องกรอก</p> %>
+    </div>
+  </div>
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="firstname">
+        ชื่อ<span class="required-star">*</span>
+      </label>
+      <input class="string-input" id="firstname" placeholder="สมฉุย" type="text" name="firstname" required>
+      <%# <p class="input-error-label">❗ จำเป็นต้องกรอก</p> %>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="lastname">
+        นามสกุล<span class="required-star">*</span>
+      </label>
+      <input class="string-input" id="lastname" placeholder="อยู่เย็น" type="text" name="lastname" required>
+      <%# <p class="input-error-label">❗ จำเป็นต้องกรอก</p> %>
+    </div>
+  </div>
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="firstname_alt">
+        Firstname
+      </label>
+      <input class="string-input" id="firstname_alt" placeholder="Somchui" type="text" name="firstname_alt">
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="lastname_alt">
+        Lastname
+      </label>
+      <input class="string-input" id="lastname_alt" placeholder="Yooyen" type="text" name="lastname_alt">
+    </div>
+  </div>
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="date_of_birth">
+        วันเกิด
+      </label>
+      <input class="string-input" id="date_of_birth" placeholder="YYYY-MM-DD" type="text" name="date_of_birth">
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="sex">
+        เพศ
+      </label>
+      <input class="string-input" id="sex" placeholder="ชาย" type="text" name="sex">
+    </div>
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="nationality">
+        สัญชาติ
+      </label>
+      <input class="string-input" id="nationality" placeholder="ไทย" type="text" name="nationality">
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="religion">
+        ศาสนา
+      </label>
+      <input class="string-input" id="religion" placeholder="พุทธ" type="text" name="religion">
+    </div>
+  </div>
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-full px-3">
+      <label class="input-label" for="address">
+        ที่อยู่
+      </label>
+      <input class="string-input" id="address" placeholder="11/22 หมู่บ้าน ตำบล" type="text" name="address">
+    </div>
+  </div>
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="issue_by">
+        ออกบัตรโดย
+      </label>
+      <input class="string-input" id="issue_by" placeholder="เจ้าพนักงานออกบัตร" type="text" name="issue_by">
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="date_of_issue">
+        วันออกบัตร
+      </label>
+      <input class="string-input" id="date_of_issue" placeholder="YYYY-MM-DD" type="text" name="date_of_issue">
+    </div>
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="date_of_expiry">
+        วันหมดอายุ
+      </label>
+      <input class="string-input" id="date_of_expiry" placeholder="YYYY-MM-DD" type="text" name="date_of_expiry">
+    </div>
+  </div>
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="phone">
+        โทรศัพท์<span class="required-star">*</span>
+      </label>
+      <input class="string-input" id="phone" placeholder="xxx-xxx-xxxx" type="text" name="phone" required>
+      <%# <p class="input-error-label">❗ จำเป็นต้องกรอก</p> %>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="line">
+        Line
+      </label>
+      <input class="string-input" id="line" placeholder="Line ID" type="text" name="line">
+    </div>
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="occupation">
+        อาชีพ
+      </label>
+      <input class="string-input" id="occupation" placeholder="ระบุ" type="text" name="occupation">
+    </div>
+  </div>
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-full px-3">
+      <label class="input-label" for="emergency_contact">
+        ข้อมูลติดต่อ กรณีเกิดเหตุฉุกเฉิน
+      </label>
+      <input class="string-input" id="emergency_contact" placeholder="ชื่อ เบอร์โทรศัพท์" type="text" name="emergency_contact">
+    </div>
+  </div>
+<div class="-mx-0 mb-1 md:flex mr-2 justify-end">
+  <button class="btn-form-submit" type="button">
+    SUBMIT
+  </button>
+</div>
+</div>
+  <div class="flex justify-center">
+    <p class="copyright-text">
+    &copy;2020 Horganice. All rights reserved.
+    </p>
+  </div>
+<!-- component -->
+</div>
+</div>
+</section>

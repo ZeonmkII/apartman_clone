@@ -1,0 +1,14 @@
+<h2><%= @title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "booking_fee-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= label f, :bookingFees %>
+  <%= text_input f, :bookingFees %>
+  <%= error_tag f, :bookingFees %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>

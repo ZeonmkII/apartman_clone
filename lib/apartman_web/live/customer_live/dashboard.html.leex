@@ -1,0 +1,386 @@
+<section class="page-bg">
+<div class="md:flex py-3">
+<div class="container page-container">
+<div class="w-5/6">
+<!--Page theme-->
+
+<h1 class="page-title-header"><%= @page_title %> :: J-Resident</h1><br>
+<div class="div-main-form">
+
+<form>
+
+  <div class="flex customer-dashboard-title-bg -mt-2">
+    <p class="customer-dashboard-header" phx-click="toggle_customer_info">
+      <br>ข้อมูลลูกค้า :: <%= @customer.firstName %> <%= @customer.lastName %>
+    </p>
+  </div>
+<!--Customer Info-->
+  <%= if @show_customer_info do %>
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="id_number">
+        เลขประจำตัวประชาชน
+      </label>
+      <input class="string-input-read" id="id_number" type="number" name="id_number" value="<%= @customer.idNumber %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="first_name">
+        ชื่อ
+      </label>
+      <input class="string-input-read" id="first_name" type="text" name="first_name" value="<%= @customer.firstName %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="last_name">
+        นามสกุล
+      </label>
+      <input class="string-input-read" id="last_name"type="text" name="last_name" value="<%= @customer.lastName %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="first_name_alt">
+        Firstname
+      </label>
+      <input class="string-input-read" id="first_name_alt" type="text" name="first_name_alt" value="<%= @customer.firstNameAlt %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="last_name_alt">
+        Lastname
+      </label>
+      <input class="string-input-read" id="last_name_alt"type="text" name="last_name_alt" value="<%= @customer.lastNameAlt %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="date_of_birth">
+        วันเกิด
+      </label>
+      <input class="string-input-read" id="date_of_birth" type="date" name="date_of_birth" value="<%= @customer.dateOfBirth %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="faith">
+        ศาสนา
+      </label>
+      <input class="string-input-read" id="faith"type="text" name="faith" value="<%= @customer.faith %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="nationality">
+        สัญชาติ
+      </label>
+      <input class="string-input-read" id="nationality" type="text" name="nationality" value="<%= @customer.nationality %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="gender">
+        เพศ
+      </label>
+      <input class="string-input-read" id="gender" type="text" name="gender" value="<%= @customer.sex %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-full px-3">
+      <label class="input-label" for="address">
+        ที่อยู่
+      </label>
+      <input class="string-input-read" id="address" type="text" name="address" value="<%= @customer.address %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="date_of_issue">
+        วันที่ออกบัตร
+      </label>
+      <input class="string-input-read" id="date_of_issue" type="date" name="date_of_issue" value="<%= @customer.dateOfIssue %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="date_of_expiry">
+        วันที่บัตรหมดอายุ
+      </label>
+      <input class="string-input-read" id="date_of_expiry"type="date" name="date_of_expiry" value="<%= @customer.dateOfExpiry %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="issue_by">
+        ออกโดย
+      </label>
+      <input class="string-input-read" id="issue_by" type="text" name="issue_by" value="<%= @customer.issueBy %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-6">
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="phone">
+        เบอร์โทรศัพท์
+      </label>
+      <input class="string-input-read" id="phone" type="tel" name="phone" value="<%= @customer.phone %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3">
+      <label class="input-label" for="line">
+        Line
+      </label>
+      <input class="string-input-read" id="line"type="text" name="line" value="<%= @customer.line %>" disabled>
+    </div>
+    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="input-label" for="occupation">
+        อาชีพ
+      </label>
+      <input class="string-input-read" id="occupation" type="text" name="occupation" value="<%= @customer.occupation %>" disabled>
+    </div>
+  </div>
+
+  <div class="-mx-3 md:flex mb-8">
+    <div class="md:w-full px-3">
+      <label class="input-label" for="emergency_contact">
+        ติดต่อฉุกเฉิน
+      </label>
+      <input class="string-input-read" id="emergency_contact"type="text" name="emergency_contact" value="<%= @customer.emergencyContact %>" disabled>
+    </div>
+  </div>
+  <% end %>
+<!--Customer Info-->
+
+<!--Main Actions-->
+  <div class="-mx-0 mb-1 md:flex justify-end mt-10 mb-10">
+    <div class="md:w-full px-3 text-center">
+
+      <button class="btn-form-submit bg-green-600 hover:bg-green-400" type="button" phx-click="book_monthly" value="<%= @customer.uuid %>">
+        📖 จองห้อง รายเดือน
+      </button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn-form-submit bg-green-600 hover:bg-green-400" type="button" phx-click="walkin_monthly" value="<%= @customer.uuid %>">
+        🚶‍♂️ สัญญาเช่า รายเดือน
+      </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn-form-submit bg-blue-600 hover:bg-blue-400" type="button" phx-click="book_daily" value="<%= @customer.uuid %>">
+        📖 จองห้อง รายวัน
+      </button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn-form-submit bg-blue-600 hover:bg-blue-400" type="button" phx-click="walkin_daily" value="<%= @customer.uuid %>">
+        🚶‍♂️ สัญญาเช่า รายวัน
+      </button>
+
+    </div>
+  </div>
+<!--Main Actions-->
+
+<!--Monthly Booking-->
+  <div class="flex customer-dashboard-title-bg">
+    <p class="customer-dashboard-header" phx-click="toggle_monthly_bookings">
+      <br>Monthly Bookings :: รายการจองห้องพักรายเดือน
+    </p>
+  </div>
+  <%= if @show_monthly_bookings do %>
+  <div class="flex justify-center">
+    <table class="table-fixed">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="px-4 py-2">หมายเลขการจอง</th>
+          <th class="px-4 py-2">แก้ไข</th>
+          <th class="px-4 py-2">เข้าพัก</th>
+          <th class="px-4 py-2">วันที่ออก</th>
+          <th class="px-4 py-2">(เดือน)</th>
+          <th class="px-4 py-2">(วัน)</th>
+          <th class="px-4 py-2">ทำสัญญา</th>
+          <th class="px-4 py-2">พิมพ์</th>
+          <th class="px-4 py-2">ลบ</th>
+        </tr>
+      <thead>
+      <tbody id="monthly_bookings">
+      <%= for monthly_booking <- @monthly_bookings do %>
+        <tr class="table-row-default <%= if Date.compare(@today, monthly_booking.checkIn) == :lt do %> table-row-clear <% else %> table-row-alert <% end %>" id="monthly_booking-<%= monthly_booking.uuid %>">
+          <td class="border hover:font-semibold px-4 py-2"><%= monthly_booking.bookingId %></td>
+          <td class="border px-4 py-2 text-center">
+              <%= link "✍🏻*", to: "#", phx_click: "edit_m_booking", phx_value_id: monthly_booking.uuid %> </td>
+          <td class="border hover:font-semibold px-4 py-2 <%= if Date.compare(@today, monthly_booking.checkIn) != :lt do %>font-bold<% end %>"><%= monthly_booking.checkIn %></td>
+          <td class="border hover:font-semibold px-4 py-2"><%= monthly_booking.checkOut %> </td>
+          <td class="border hover:font-semibold px-4 py-2"><%= monthly_booking.durationMonth %></td>
+          <td class="border hover:font-semibold px-4 py-2"><%= monthly_booking.durationDay %></td>
+          <td class="border px-4 py-2 text-center">
+              <%= link "✒️", to: "#", phx_click: "make_contract", phx_value_id: monthly_booking.uuid %> </td>
+          <td class="border px-4 py-2 text-center">
+              <%= link "🖨️", to: "#", phx_click: "print_m_booking", phx_value_id: monthly_booking.uuid %> </td>
+          <td class="border px-4 py-2 text-center">
+              <%= link "🗑️", to: "#", phx_click: "delete_m_booking", phx_value_id: monthly_booking.uuid, data: [confirm: "คอนเฟิร์ม :: ต้องการลบ ข้อมูลการจอง ?"] %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
+<!--Monthly Booking-->
+
+
+<!--Contract-->
+  <div class="flex customer-dashboard-title-bg">
+    <p class="customer-dashboard-header" phx-click="toggle_contracts">
+      <br>Contract :: สัญญาห้องพักรายเดือน
+    </p>
+  </div>
+  <%= if @show_contracts do %>
+  <div class="flex justify-center">
+    <table class="table-fixed">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="px-4 py-2">หมายเลขสัญญา</th>
+          <th class="px-4 py-2">แก้ไข</th>
+          <th class="px-4 py-2">เริ่มสัญญา</th>
+          <th class="px-4 py-2">สิ้นสุด</th>
+          <th class="px-4 py-2">(เดือน)</th>
+          <th class="px-4 py-2">(วัน)</th>
+          <th class="px-4 py-2">เลขห้อง</th>
+          <th class="px-4 py-2">ต่อสัญญา</th>
+          <th class="px-4 py-2">พิมพ์</th>
+          <th class="px-4 py-2">ลบ</th>
+        </tr>
+      <thead>
+      <tbody id="contracts">
+      <%= for contract <- @contracts do %>
+        <tr class="table-row-default <%= if Date.compare(@today, contract.checkOut) == :gt do %> table-row-alert <% else %> table-row-clear <% end %>" id="contract-<%= contract.uuid %>">
+          <td class="border hover:font-semibold px-4 py-2"><%= contract.contractId %></td>
+          <td class="border px-4 py-2 text-center">
+              <%= link "✍🏻*", to: "#", phx_click: "edit_contract", phx_value_id: contract.uuid %> </td>
+          <td class="border hover:font-semibold px-4 py-2"><%= contract.checkIn %></td>
+          <td class="border hover:font-semibold px-4 py-2 <%= if Date.compare(@today, contract.checkOut) == :gt do %>font-bold<% end %>"><%= contract.checkOut %></td>
+          <td class="border hover:font-semibold px-4 py-2"><%= contract.durationMonth %></td>
+          <td class="border hover:font-semibold px-4 py-2"><%= contract.durationDay %></td>
+          <td class="border hover:font-semibold px-4 py-2">🔑<%= contract.roomNumber %></td>
+          <td class="border px-4 py-2 text-center">
+              <%= if Date.compare(@today, contract.checkOut) == :gt do %> <%= link "⏱️", to: "#", phx_click: "renew_contract", phx_value_id: contract.uuid %> <% end %> </td>
+          <td class="border px-4 py-2 text-center">
+              <%= link "🖨️*", to: "#", phx_click: "print_contract", phx_value_id: contract.uuid %> </td>
+          <td class="border px-4 py-2 text-center">
+              <%= link "🗑️", to: "#", phx_click: "delete_contract", phx_value_id: contract.uuid, data: [confirm: "คอนเฟิร์ม :: ต้องการลบ สัญญาเช่า ?"] %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
+<!--Contract-->
+
+<!--Daily Booking-->
+  <div class="flex customer-dashboard-title-bg">
+    <p class="customer-dashboard-header" phx-click="toggle_daily_bookings">
+      <br>Daily Bookings :: รายการจองห้องพักรายวัน
+    </p>
+  </div>
+  <%= if @show_daily_bookings do %>
+  <div class="flex justify-center">
+    <table class="table-fixed">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="px-4 py-2">หมายเลขการจอง</th>
+          <th class="px-4 py-2">แก้ไข</th>
+          <th class="px-4 py-2">เข้าพัก</th>
+          <th class="px-4 py-2">วันที่ออก</th>
+          <th class="px-4 py-2">(วัน)</th>
+          <th class="px-4 py-2">เช็คอิน</th>
+          <th class="px-4 py-2">พิมพ์</th>
+          <th class="px-4 py-2">ลบ</th>
+        </tr>
+      <thead>
+      <tbody id="daily_bookings">
+      <%= for daily_booking <- @daily_bookings do %>
+        <tr class="table-row-default <%= if Date.compare(@today, daily_booking.checkIn) == :lt do %> table-row-clear <% else %> table-row-alert <% end %>" id="daily_booking-<%= daily_booking.uuid %>">
+          <td class="border hover:font-semibold px-4 py-2"><%= daily_booking.bookingId %></td>
+          <td class="border px-4 py-2 text-center">
+              <%= link "✍🏻*", to: "#", phx_click: "edit_d_booking", phx_value_id: daily_booking.uuid %> </td>
+          <td class="border hover:font-semibold px-4 py-2 <%= if Date.compare(@today, daily_booking.checkIn) != :lt do %>font-bold<% end %>"><%= daily_booking.checkIn %></td>
+          <td class="border hover:font-semibold px-4 py-2"><%= daily_booking.checkOut %></td>
+          <td class="border hover:font-semibold px-4 py-2"><%= daily_booking.durationDay %></td>
+          <td class="border px-4 py-2 text-center">
+              <%= link "✒️", to: "#", phx_click: "make_checkin", phx_value_id: daily_booking.uuid %> </td>
+          <td class="border px-4 py-2 text-center">
+              <%= link "🖨️", to: "#", phx_click: "print_d_booking", phx_value_id: daily_booking.uuid %> </td>
+          <td class="border px-4 py-2 text-center">
+              <%= link "🗑️", to: "#", phx_click: "delete_d_booking", phx_value_id: daily_booking.uuid, data: [confirm: "คอนเฟิร์ม :: ต้องการลบข้อมูลการจอง ?"] %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
+<!--Daily Booking-->
+
+<!--Check-In-->
+  <div class="flex customer-dashboard-title-bg">
+    <p class="customer-dashboard-header" phx-click="toggle_checkins">
+      <br>Check-In :: ห้องพักรายวัน
+    </p>
+  </div>
+  <%= if @show_checkins do %>
+  <div class="flex justify-center">
+    <table class="table-fixed">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="px-4 py-2">แก้ไข</th>
+          <th class="px-4 py-2">เข้าพัก</th>
+          <th class="px-4 py-2">วันที่ออก</th>
+          <th class="px-4 py-2">(วัน)</th>
+          <th class="px-4 py-2">⌚ เข้า</th>
+          <th class="px-4 py-2">เลขห้อง</th>
+          <th class="px-4 py-2">พิมพ์</th>
+          <th class="px-4 py-2">ลบ</th>
+        </tr>
+      <thead>
+      <tbody id="checkins">
+      <%= for checkin <- @checkins do %>
+        <tr class="table-row-default <%= if Date.compare(@today, checkin.checkOut) == :gt do %> table-row-alert <% else %> table-row-clear <% end %>" id="checkin-<%= checkin.uuid %>">
+          <td class="border px-4 py-2 text-center">
+              <%= link "✍🏻*", to: "#", phx_click: "edit_checkin", phx_value_id: checkin.uuid %> </td>
+          <td class="border hover:font-semibold px-4 py-2"><%= checkin.checkIn %></td>
+          <td class="border hover:font-semibold px-4 py-2 <%= if Date.compare(@today, checkin.checkOut) == :gt do %>font-bold<% end %>"><%= checkin.checkOut %></td>
+          <td class="border hover:font-semibold px-4 py-2"><%= checkin.durationDay %></td>
+          <td class="border hover:font-semibold px-4 py-2"><%= checkin.timeIn %></td>
+          <td class="border hover:font-semibold px-4 py-2">🔑<%= checkin.roomNumber %></td>
+          <td class="border px-4 py-2 text-center">
+              <%= link "🖨️*", to: "#", phx_click: "print_checkin", phx_value_id: checkin.uuid %> </td>
+          <td class="border px-4 py-2 text-center">
+              <%= link "🗑️", to: "#", phx_click: "delete_checkin", phx_value_id: checkin.uuid, data: [confirm: "คอนเฟิร์ม :: ต้องการลบข้อมูลการจอง ?"] %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
+<!--Check-In-->
+
+</form>
+
+<!--Main Form-->
+</div>
+
+<!--Page theme-->
+</div>
+</div>
+</div>
+
+<!--End Credit-->
+
+  <div class="flex justify-center">
+    <p class="copyright-text">
+    &copy;2020 Horganice. All rights reserved.
+    </p>
+  </div>
+
+<!--End Credit-->
+
+<!-- DEBUG -->
+<%= if @debug do %>
+  <div class="flex justify-center">
+    <p class="copyright-text">
+      <br>:: DEBUG ::
+      <br>Customer-ID : <%= @customer.uuid %>
+      <br>Today : <%= @today %>
+    </p>
+  </div>
+
+<% end %>
+<!-- DEBUG -->
+</section>

@@ -1,0 +1,35 @@
+<h1>Listing Floors</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, ApartmanWeb.FloorLive.FormComponent,
+    id: @floor.id || :new,
+    title: @page_title,
+    action: @live_action,
+    floor: @floor
+    # return_to: Routes.floor_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="floors">
+    <%= for floor <- @floors do %>
+      <tr id="floor-<%= floor.id %>">
+        <td><%= floor.number %></td>
+
+        <td>
+          <%# <span><%= live_redirect "Show", to: Routes.floor_show_path(@socket, :show, floor) </span> %>
+          <%# <span><%= live_patch "Edit", to: Routes.floor_index_path(@socket, :edit, floor) </span> %>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: floor.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= # live_patch "New Floor", to: Routes.floor_index_path(@socket, :new) %></span>
